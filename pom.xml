@@ -44,6 +44,11 @@
             <artifactId>cucumber-reporting</artifactId>
             <version>3.8.0</version>
         </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
