@@ -16,7 +16,6 @@ public class LoginPage {
     }
 
     public void navigatedToLoginPage() {
-
         webDriver.get("http://www.google.com");
     }
 }
