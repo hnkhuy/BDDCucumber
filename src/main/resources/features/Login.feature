@@ -5,3 +5,4 @@ Feature: Demo With Google
     When I fill search content to Seach Box: "I'm so handsome"
     And I click to Search Button
     Then Search result page showed
+
