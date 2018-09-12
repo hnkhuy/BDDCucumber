@@ -1,7 +1,7 @@
-Feature: Login
+Feature: Demo With Google
 
-  Scenario: Successful login
-    Given I navigated to login page
-    When I fill User Name with "per.auditor00100a.general@mailinator.com"
-    And I fill Password with "Changeit@123"
-    Then I say st
+  Scenario: Search around
+    Given I navigated to Google seach page
+    When I fill search content to Seach Box: "I'm so handsome"
+    And I click to Search Button
+    Then Search result page showed
