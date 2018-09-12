@@ -1,6 +1,7 @@
-package StepDefs;
+package StepDefs.demo;
 
-import Page.GoogleSearchPage;
+import Page.demo.GoogleSearchPage;
+import StepDefs.BaseStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
