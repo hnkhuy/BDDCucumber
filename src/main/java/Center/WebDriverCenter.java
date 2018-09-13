@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by huy.huynh on 12/09/2018.
@@ -22,6 +23,7 @@ public class WebDriverCenter {
         WebDriver webDriver;
         if (webDrivers.isEmpty()) {
             webDriver = new ChromeDriver(options);
+            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             webDrivers.add(webDriver);
         }
     }
