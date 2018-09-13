@@ -6,15 +6,18 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by huy.huynh on 11/09/2018.
  */
-public class BaseStepDefs {
+public abstract class AbstractStepDefs {
     public WebDriver webDriver;
 
-    public BaseStepDefs() {
+    public AbstractStepDefs() {
         try {
             webDriver = WebDriverCenter.getPrimaryWebDriver();
         } catch (Exception e) {
             //Let setup driver type on @BeforeTest
             e.printStackTrace();
         }
+        initPages();
     }
+
+    protected abstract void initPages();
 }

@@ -1,7 +1,7 @@
-package StepDefs.demo;
+package Demo.DemoStepDefs;
 
-import Page.demo.GoogleLoginPage;
-import StepDefs.BaseStepDefs;
+import Demo.Page.GoogleLoginPage;
+import StepDefs.AbstractStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,11 +10,12 @@ import cucumber.api.java.en.When;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleLoginStepDef extends BaseStepDefs {
+public class GoogleLoginStepDef extends AbstractStepDefs {
 
     private GoogleLoginPage googleLoginPage;
 
-    public GoogleLoginStepDef() {
+    @Override
+    protected void initPages() {
         googleLoginPage = new GoogleLoginPage(webDriver);
     }
 

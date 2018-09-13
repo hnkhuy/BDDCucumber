@@ -1,7 +1,7 @@
-package StepDefs.demo;
+package Demo.DemoStepDefs;
 
-import Page.demo.GoogleSearchPage;
-import StepDefs.BaseStepDefs;
+import Demo.Page.GoogleSearchPage;
+import StepDefs.AbstractStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,11 +10,12 @@ import cucumber.api.java.en.When;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleSearchStepDef extends BaseStepDefs {
+public class GoogleSearchStepDef extends AbstractStepDefs {
 
     private GoogleSearchPage googleSearchPage;
 
-    public GoogleSearchStepDef() {
+    @Override
+    protected void initPages() {
         googleSearchPage = new GoogleSearchPage(webDriver);
     }
 

@@ -1,4 +1,4 @@
-package Page.demo;
+package Demo.Page;
 
 import Utilities.GeneralUtilities;
 import Utilities.PropertiesFileReader;
