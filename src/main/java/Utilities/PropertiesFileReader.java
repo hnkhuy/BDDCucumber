@@ -14,7 +14,7 @@ public class PropertiesFileReader {
 
     public static void openFileProperty() throws Exception {
         prop = new Properties();
-        input = new FileInputStream("src/main/resources/files/login.properties");
+        input = new FileInputStream("src/main/resources/private/login.properties");
         prop.load(input);
     }
 
