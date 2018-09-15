@@ -20,6 +20,7 @@ public class EngagementListPage extends AbstractPage {
     }
 
     public void seeEngagementListPage() {
+        logger.debug("Debugging Engagement List Page loadding");
         Assert.assertTrue(pageHeaderTitle.isDisplayed(), "Expected Page Header Title is displayed");
     }
 }

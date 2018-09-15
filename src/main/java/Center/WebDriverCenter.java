@@ -1,5 +1,7 @@
 package Center;
 
+import Utilities.Loggger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class WebDriverCenter {
     private static List<WebDriver> webDrivers = new ArrayList<WebDriver>();
+    private static Logger logger = Loggger.getLogger(WebDriverCenter.class);
 
     public static void setupPrimaryWebDriver() {
         //init with chrome- multi browser later
@@ -26,13 +29,15 @@ public class WebDriverCenter {
             webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             webDrivers.add(webDriver);
         }
+        logger.info("--------------------Start A Test--------------------");
     }
 
     public static WebDriver getPrimaryWebDriver() throws Exception {
         if (!webDrivers.isEmpty()) {
             return webDrivers.get(0);
         }
-        throw new Exception("Webdriver need to setup first");
+        logger.error("Webdriver need to be setup first");
+        throw new Exception("Webdriver need to be setup first");
     }
 
     public static void quitAllDriver() {

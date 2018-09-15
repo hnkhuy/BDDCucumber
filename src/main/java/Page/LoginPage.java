@@ -27,6 +27,7 @@ public class LoginPage extends AbstractPage {
 
     public void navigatedToLoginPage() {
         webDriver.get(PropertiesFileReader.getProperty("url"));
+        logger.info("Navigated to login page");
     }
 
     public void fillEmailWithDefaultEmail() {

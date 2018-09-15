@@ -13,7 +13,6 @@ public class LoginStepDefs extends AbstractStepDefs {
 
     private LoginPage loginPage;
 
-
     @Override
     protected void initPages() {
         loginPage= new LoginPage(webDriver);
@@ -38,5 +37,4 @@ public class LoginStepDefs extends AbstractStepDefs {
     public void clickOnLoginButton() throws Throwable {
         loginPage.clickOnLoginButton();
     }
-
 }

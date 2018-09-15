@@ -8,7 +8,7 @@
         <RollingFile name="fileLogger" fileName="${basePath}/rollingLog.log"
                      filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log">
             <PatternLayout>
-                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} (%c.java:%L).%M - %m%n</pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
@@ -18,14 +18,14 @@
         <Console name="console" target="SYSTEM_OUT">
             <!--<PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />-->
             <PatternLayout
-                    pattern="%highlight{[%d] - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}"/>
+                    pattern="%highlight{%c{1}.%M:%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=cyan, DEBUG=green, TRACE=black}"/>
 
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.howtodoinjava" level="debug" additivity="false">
-            <appender-ref ref="fileLogger" level="debug"/>
-        </Logger>
+        <!--<Logger name="com.howtodoinjava" level="debug" additivity="false">-->
+        <!--<appender-ref ref="fileLogger" level="debug"/>-->
+        <!--</Logger>-->
         <Root level="debug" additivity="false">
             <appender-ref ref="console"/>
             <appender-ref ref="fileLogger"/>
