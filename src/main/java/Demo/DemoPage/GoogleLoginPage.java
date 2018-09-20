@@ -1,7 +1,7 @@
-package Demo.Page;
+package Demo.DemoPage;
 
-import Utilities.GeneralUtilities;
-import Utilities.PropertiesFileReader;
+import Demo.DemoUtilities.DemoPropertiesFileReader;
+import Page.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +11,7 @@ import org.testng.Assert;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleLoginPage {
+public class GoogleLoginPage extends AbstractPage {
 
     private WebDriver webDriver;
 
@@ -31,33 +31,34 @@ public class GoogleLoginPage {
     private WebElement passwordErrorMessage;
 
     public GoogleLoginPage(WebDriver driver) {
+        super(driver);
         this.webDriver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public void navigatedToGoogleSeachPage() {
-        webDriver.get(PropertiesFileReader.getProperty("url"));
+        webDriver.get(DemoPropertiesFileReader.getProperty("url"));
     }
 
     public void fillEmailToEmailBox() {
-        emailTextbox.sendKeys(PropertiesFileReader.getProperty("email"));
+        actions.sendKeyElement(emailTextbox, DemoPropertiesFileReader.getProperty("email"), "Email Textbox");
     }
 
     public void clickOnEmailNextButton() {
-        emailNextButton.click();
+        actions.clickElement(emailNextButton, "Email Next Button");
     }
 
     public void fillPasswordToPasswordBox() throws Exception {
-        GeneralUtilities.waitSomeSeconds(2);
-        passwordTextbox.sendKeys(PropertiesFileReader.getProperty("password"));
+        waitors.waitSomeSeconds(2);
+        actions.sendKeyElement(passwordTextbox, DemoPropertiesFileReader.getProperty("password"), "Password Textbox");
     }
 
     public void clickOnPasswordNextButton() {
-        passwordNextButton.click();
+        actions.clickElement(passwordNextButton, "Password Next Button");
     }
 
     public void wrongPasswordErrorMessageShowed() {
-        GeneralUtilities.waitSomeSeconds(2);
+        waitors.waitSomeSeconds(2);
         Assert.assertTrue(passwordErrorMessage.isDisplayed(), "Password Error Message not showed");
     }
 }

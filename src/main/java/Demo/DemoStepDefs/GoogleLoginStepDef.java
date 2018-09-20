@@ -1,6 +1,6 @@
 package Demo.DemoStepDefs;
 
-import Demo.Page.GoogleLoginPage;
+import Demo.DemoPage.GoogleLoginPage;
 import StepDefs.AbstractStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

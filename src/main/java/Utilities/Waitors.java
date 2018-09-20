@@ -17,6 +17,14 @@ public class Waitors {
         this.webDriver = webDriver;
     }
 
+    public void waitSomeSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void waitForElementToBeClickable(WebElement webElement, String elementName) {
         logger.info("Click on element: " + elementName);
         if (webDriver == null) {

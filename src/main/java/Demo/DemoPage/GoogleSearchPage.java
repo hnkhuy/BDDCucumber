@@ -1,5 +1,6 @@
-package Demo.Page;
+package Demo.DemoPage;
 
+import Page.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import org.testng.Assert;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleSearchPage {
+public class GoogleSearchPage extends AbstractPage {
 
     private WebDriver webDriver;
 
@@ -29,6 +30,7 @@ public class GoogleSearchPage {
     private WebElement resultCounterBar;
 
     public GoogleSearchPage(WebDriver driver) {
+        super(driver);
         this.webDriver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -38,15 +40,16 @@ public class GoogleSearchPage {
     }
 
     public void fillSearchContentToSeachBox(String searchContent) {
-        searchTextbox.sendKeys(searchContent);
+        actions.sendKeyElement(searchTextbox, searchContent, "Search Textbox");
     }
 
     public void clickToSearchButton() {
-        googleLogo.click();
-        searchButton.click();
+        actions.clickElement(googleLogo, "Google Logo");
+        actions.clickElement(searchButton, "Search Button");
     }
 
     public void searchResultPageShowed() {
+        waitors.waitForVisibilityOf(resultCounterBar, "Result Counter Bar");
         Assert.assertTrue(resultCounterBar.isDisplayed(), "Result Counter Bar not showed");
     }
 }
