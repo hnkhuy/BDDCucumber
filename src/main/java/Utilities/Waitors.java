@@ -26,7 +26,7 @@ public class Waitors {
     }
 
     public void waitForElementToBeClickable(WebElement webElement, String elementName) {
-        logger.info("Click on element: " + elementName);
+        logger.info("Waiting for clicking on element: " + elementName);
         if (webDriver == null) {
             logger.error("WebDriver must not be null");
         }
@@ -35,7 +35,7 @@ public class Waitors {
     }
 
     public void waitForVisibilityOf(WebElement webElement, String elementName) {
-        logger.info("Visibility of element: " + elementName);
+        logger.info("Waiting for Visibility of element: " + elementName);
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, Static.EXPLITCIT_TIMEOUT_IN_SECONDS);
         webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
     }

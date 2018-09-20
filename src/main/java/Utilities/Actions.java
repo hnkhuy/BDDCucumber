@@ -1,6 +1,7 @@
 package Utilities;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
@@ -9,9 +10,15 @@ import org.openqa.selenium.WebElement;
  */
 public class Actions {
     private Logger logger = Loggger.getLogger(this.getClass());
+    private Waitors waitors;
+
+    public Actions(WebDriver driver) {
+        waitors = new Waitors(driver);
+    }
 
     public void clickElement(WebElement element, String elementName) {
         logger.info("Click on element: " + elementName);
+        waitors.waitForElementToBeClickable(element, elementName);
         element.click();
     }
 
