@@ -21,6 +21,7 @@ public class LoginPage extends AbstractPage {
     private WebElement signInButton;
 
     public LoginPage(WebDriver driver) {
+        super(driver);
         this.webDriver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -39,7 +40,8 @@ public class LoginPage extends AbstractPage {
     }
 
     public void clickOnLoginButton() {
+        waitors.waitForElementToBeClickable(signInButton, "Sign In Button");
         actions.clickElement(signInButton, "Sign In Button");
     }
-    
+
 }

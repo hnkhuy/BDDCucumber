@@ -15,12 +15,14 @@ public class EngagementListPage extends AbstractPage {
     private WebElement pageHeaderTitle;
 
     public EngagementListPage(WebDriver driver) {
+        super(driver);
         this.webDriver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public void seeEngagementListPage() {
         logger.debug("Debugging Engagement List Page loadding");
+        waitors.waitForVisibilityOf(pageHeaderTitle,"Page Header Title");
         Assert.assertTrue(pageHeaderTitle.isDisplayed(), "Expected Page Header Title is displayed");
     }
 }

@@ -2,6 +2,7 @@ package Page;
 
 import Utilities.Actions;
 import Utilities.Loggger;
+import Utilities.Waitors;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -12,4 +13,9 @@ public abstract class AbstractPage {
     protected static WebDriver webDriver;
     protected static Actions actions = new Actions();
     protected Logger logger = Loggger.getLogger(this.getClass());
+    protected Waitors waitors;
+
+    public AbstractPage(WebDriver driver) {
+        waitors = new Waitors(driver);
+    }
 }
