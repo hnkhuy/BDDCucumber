@@ -1,7 +1,6 @@
 package Demo.DemoPage;
 
 import Page.AbstractPage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,8 +10,6 @@ import org.testng.Assert;
  * Created by huy.huynh on 12/09/2018.
  */
 public class GoogleSearchPage extends AbstractPage {
-
-    private WebDriver webDriver;
 
     @FindBy(id = "lst-ib")
     private WebElement searchTextbox;
@@ -29,10 +26,8 @@ public class GoogleSearchPage extends AbstractPage {
     @FindBy(id = "resultStats")
     private WebElement resultCounterBar;
 
-    public GoogleSearchPage(WebDriver driver) {
-        super(driver);
-        this.webDriver = driver;
-        PageFactory.initElements(driver, this);
+    public GoogleSearchPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     public void navigatedToGoogleSeachPage() {

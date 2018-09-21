@@ -2,7 +2,6 @@ package Demo.DemoPage;
 
 import Demo.DemoUtilities.DemoPropertiesFileReader;
 import Page.AbstractPage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,8 +11,6 @@ import org.testng.Assert;
  * Created by huy.huynh on 12/09/2018.
  */
 public class GoogleLoginPage extends AbstractPage {
-
-    private WebDriver webDriver;
 
     @FindBy(xpath = "//input[@type='email']")
     private WebElement emailTextbox;
@@ -30,10 +27,8 @@ public class GoogleLoginPage extends AbstractPage {
     @FindBy(xpath = "//div[@id='password']/div/div[@aria-atomic]")
     private WebElement passwordErrorMessage;
 
-    public GoogleLoginPage(WebDriver driver) {
-        super(driver);
-        this.webDriver = driver;
-        PageFactory.initElements(driver, this);
+    public GoogleLoginPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     public void navigatedToGoogleSeachPage() {

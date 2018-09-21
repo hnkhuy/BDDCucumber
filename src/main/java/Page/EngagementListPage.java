@@ -1,6 +1,5 @@
 package Page;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,10 +18,8 @@ public class EngagementListPage extends AbstractPage {
     @FindBy(xpath = "//div[contains(@class,'engagement-name')]")
     private List<WebElement> engagementNameList;
 
-    public EngagementListPage(WebDriver driver) {
-        super(driver);
-        this.webDriver = driver;
-        PageFactory.initElements(driver, this);
+    public EngagementListPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     public void seeEngagementListPage() {

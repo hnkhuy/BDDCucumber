@@ -1,7 +1,6 @@
 package Page;
 
 import Utilities.PropertiesFileReader;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,10 +19,8 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement signInButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-        this.webDriver = driver;
-        PageFactory.initElements(driver, this);
+    public LoginPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     public void navigatedToLoginPage() {

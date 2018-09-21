@@ -12,7 +12,7 @@ public class EngagementListStepDefs extends AbstractStepDefs {
 
     @Override
     protected void initPages() {
-        engagementListPage = new EngagementListPage(webDriver);
+        engagementListPage = new EngagementListPage();
     }
 
     @Then("^I can see Engagement List page$")

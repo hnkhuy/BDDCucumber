@@ -16,7 +16,7 @@ public class GoogleSearchStepDef extends AbstractStepDefs {
 
     @Override
     protected void initPages() {
-        googleSearchPage = new GoogleSearchPage(webDriver);
+        googleSearchPage = new GoogleSearchPage();
     }
 
     @Given("^I navigated to Google seach page$")

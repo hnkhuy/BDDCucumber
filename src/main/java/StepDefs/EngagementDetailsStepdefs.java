@@ -1,7 +1,6 @@
 package StepDefs;
 
 import Page.EngagementDetailsPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
@@ -14,7 +13,7 @@ public class EngagementDetailsStepdefs extends AbstractStepDefs {
 
     @Override
     protected void initPages() {
-        engagementDetailsPage = new EngagementDetailsPage(webDriver);
+        engagementDetailsPage = new EngagementDetailsPage();
     }
 
     @And("^I should see Engagement Detail page of Engagement: \"([^\"]*)\"$")

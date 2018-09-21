@@ -15,7 +15,7 @@ public class LoginStepDefs extends AbstractStepDefs {
 
     @Override
     protected void initPages() {
-        loginPage= new LoginPage(webDriver);
+        loginPage = new LoginPage();
     }
 
     @Given("^I navigated to Login page$")

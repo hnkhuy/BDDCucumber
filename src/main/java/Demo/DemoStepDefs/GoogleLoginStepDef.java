@@ -16,7 +16,7 @@ public class GoogleLoginStepDef extends AbstractStepDefs {
 
     @Override
     protected void initPages() {
-        googleLoginPage = new GoogleLoginPage(webDriver);
+        googleLoginPage = new GoogleLoginPage();
     }
 
     @Given("^I navigated to Google Login page$")
