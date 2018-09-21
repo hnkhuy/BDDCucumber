@@ -19,4 +19,9 @@ public class EngagementListStepDefs extends AbstractStepDefs {
     public void seeEngagementListPage() throws Throwable {
         engagementListPage.seeEngagementListPage();
     }
+
+    @Then("^I click on Engagement named: \"([^\"]*)\"$")
+    public void clickOnEngagementNamed(String engagementName) throws Throwable {
+        engagementListPage.clickOnEngagementNamed(engagementName);
+    }
 }

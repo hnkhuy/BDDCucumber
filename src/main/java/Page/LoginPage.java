@@ -40,6 +40,7 @@ public class LoginPage extends AbstractPage {
     }
 
     public void clickOnLoginButton() {
+        waitors.waitForElementToBeClickable(signInButton, "Sign In Button");
         actions.clickElement(signInButton, "Sign In Button");
     }
 

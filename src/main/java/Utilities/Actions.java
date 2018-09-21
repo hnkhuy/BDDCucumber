@@ -26,4 +26,9 @@ public class Actions {
         logger.info("Sendkey value: " + value + " to element: " + elementName);
         element.sendKeys(value);
     }
+
+    public boolean verifyElementExist(WebElement element, String elementName){
+        waitors.waitForVisibilityOf(element,elementName);
+        return element.isDisplayed();
+    }
 }
