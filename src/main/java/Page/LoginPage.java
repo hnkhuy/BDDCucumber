@@ -19,7 +19,8 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement signInButton;
 
-    public LoginPage() {
+    @Override
+    protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 

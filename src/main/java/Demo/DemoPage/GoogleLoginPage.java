@@ -27,7 +27,8 @@ public class GoogleLoginPage extends AbstractPage {
     @FindBy(xpath = "//div[@id='password']/div/div[@aria-atomic]")
     private WebElement passwordErrorMessage;
 
-    public GoogleLoginPage() {
+    @Override
+    protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 

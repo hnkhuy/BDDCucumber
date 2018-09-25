@@ -26,5 +26,8 @@ public abstract class AbstractPage {
                 e.printStackTrace();
             }
         }
+        initPageFactory();
     }
+
+    protected abstract void initPageFactory();
 }

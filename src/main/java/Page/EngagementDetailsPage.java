@@ -22,7 +22,8 @@ public class EngagementDetailsPage extends AbstractPage {
     @FindBy(xpath = "//h3[@class='todoList-noTodos']")
     private WebElement noTodosLabel;
 
-    public EngagementDetailsPage() {
+    @Override
+    protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 

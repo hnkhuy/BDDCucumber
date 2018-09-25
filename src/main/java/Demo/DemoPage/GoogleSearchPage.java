@@ -26,7 +26,8 @@ public class GoogleSearchPage extends AbstractPage {
     @FindBy(id = "resultStats")
     private WebElement resultCounterBar;
 
-    public GoogleSearchPage() {
+    @Override
+    protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 

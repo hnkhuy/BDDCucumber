@@ -18,7 +18,8 @@ public class EngagementListPage extends AbstractPage {
     @FindBy(xpath = "//div[contains(@class,'engagement-name')]")
     private List<WebElement> engagementNameList;
 
-    public EngagementListPage() {
+    @Override
+    protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 
