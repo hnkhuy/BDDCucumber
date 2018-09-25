@@ -15,29 +15,44 @@ import java.util.concurrent.TimeUnit;
  */
 public class WebDriverCenter {
     private static List<WebDriver> webDrivers = new ArrayList<WebDriver>();
+    private static WebDriver webDriver;
     private static Logger logger = Loggger.getLogger(WebDriverCenter.class);
+    private static boolean isPrimaryDriverJustChanged = false;
 
-    public static void setupPrimaryWebDriver() {
-        //init with chrome- multi browser later
+    private static ChromeOptions setupChromeWebDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
         options.addArguments("start-maximized");
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
-        WebDriver webDriver;
-        if (webDrivers.isEmpty()) {
-            webDriver = new ChromeDriver(options);
-            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            webDrivers.add(webDriver);
-        }
-        logger.info("--------------------Start A Test--------------------");
+        return options;
+    }
+
+    public static void setupPrimaryWebDriver() {
+        //init with chrome- multi browser later
+
+        webDriver = new ChromeDriver(setupChromeWebDriver());
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        isPrimaryDriverJustChanged = true;
     }
 
     public static WebDriver getPrimaryWebDriver() throws Exception {
-        if (!webDrivers.isEmpty()) {
-            return webDrivers.get(0);
+        if (webDriver != null) {
+            return webDriver;
         }
         logger.error("Webdriver need to be setup first");
         throw new Exception("Webdriver need to be setup first");
+    }
+
+    public static void quitPrimaryWebDriver() {
+        webDriver.quit();
+    }
+
+    public static boolean getPrimaryWebDriverStatus() {
+        if(isPrimaryDriverJustChanged){
+            isPrimaryDriverJustChanged=false;
+            return true;
+        }
+        return isPrimaryDriverJustChanged;
     }
 
     public static void quitAllDriver() {

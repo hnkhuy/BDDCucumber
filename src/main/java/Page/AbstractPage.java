@@ -1,11 +1,13 @@
 package Page;
 
-import Center.WebDriverCenter;
 import Utilities.Actions;
 import Utilities.Loggger;
 import Utilities.Waitors;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
+import static Center.WebDriverCenter.getPrimaryWebDriver;
+import static Center.WebDriverCenter.getPrimaryWebDriverStatus;
 
 /**
  * Created by huy.huynh on 13/09/2018.
@@ -17,9 +19,9 @@ public abstract class AbstractPage {
     protected static Waitors waitors;
 
     public AbstractPage() {
-        if (webDriver == null) {
+        if (getPrimaryWebDriverStatus()) {
             try {
-                webDriver = WebDriverCenter.getPrimaryWebDriver();
+                webDriver = getPrimaryWebDriver();
                 waitors = new Waitors(webDriver);
                 actions = new Actions(webDriver);
             } catch (Exception e) {
