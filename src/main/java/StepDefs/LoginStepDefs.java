@@ -1,6 +1,7 @@
 package StepDefs;
 
 import Page.LoginPage;
+import com.cucumber.listener.Reporter;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -26,6 +27,7 @@ public class LoginStepDefs extends AbstractStepDefs {
     @When("^I fill email with default email$")
     public void fillEmailWithDefaultEmail() throws Throwable {
         loginPage.fillEmailWithDefaultEmail();
+        Reporter.addStepLog("++++++++++++++Step Log message goes here 1");
     }
 
     @And("^I fill password with default password$")
@@ -36,5 +38,6 @@ public class LoginStepDefs extends AbstractStepDefs {
     @And("^I click on Login button$")
     public void clickOnLoginButton() throws Throwable {
         loginPage.clickOnLoginButton();
+        Reporter.addScenarioLog("++++*****+++++Scenario Log message goes here");
     }
 }

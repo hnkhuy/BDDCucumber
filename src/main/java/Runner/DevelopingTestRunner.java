@@ -24,6 +24,12 @@ public class DevelopingTestRunner extends AbstractTestNGCucumberTests {
     @AfterClass
     public static void writeExtentReport() throws Exception {
         Reporter.loadXMLConfig(new File(PropertiesFileReader.getPropertyOfConfigFile("reportConfigPath")));
+        Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
+        Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
+        Reporter.setSystemInfo("Machine", "Windows 10" + "64 Bit");
+        Reporter.setSystemInfo("Selenium", "3.14.0");
+        Reporter.setSystemInfo("Maven", "4.0.0");
+        Reporter.setSystemInfo("Java Version", "1.8");
     }
 
     @AfterTest
