@@ -22,6 +22,12 @@ public class PropertiesFileReader {
         return prop.getProperty(key);
     }
 
+    public static String getPropertyOfConfigFile(String key) throws Exception {
+        Properties ppt = new Properties();
+        ppt.load(new FileInputStream("src/main/resources/files/configuration.properties"));
+        return ppt.getProperty(key);
+    }
+
     public static void closePropertiesFileInputStream() {
         if (input != null) {
             try {

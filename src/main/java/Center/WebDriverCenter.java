@@ -29,7 +29,6 @@ public class WebDriverCenter {
 
     public static void setupPrimaryWebDriver() {
         //init with chrome- multi browser later
-
         webDriver = new ChromeDriver(setupChromeWebDriver());
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         isPrimaryDriverJustChanged = true;
