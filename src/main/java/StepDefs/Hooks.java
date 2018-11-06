@@ -21,7 +21,7 @@ public class Hooks {
     public void beforeScenario(Scenario scenario) {
         logger.info("--------------------Start Scenario \"" + scenario.getName() + "\"--------------------");
         WebDriverCenter.setupPrimaryWebDriver();
-        if (scenario.getName().equals("Login and fail")) {
+        if (scenario.getName().contains("Fail")) {
             Reporter.assignAuthor("Fail");
         } else {
             Reporter.assignAuthor("Other");
