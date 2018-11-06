@@ -1,7 +1,53 @@
-Feature: Login
+Feature: Developing Project
 
-  Scenario: Successful login
-    Given I navigated to login page
-    When I fill User Name with "per.auditor00100a.general@mailinator.com"
-    And I fill Password with "Changeit@123"
-    Then I say st
+  Scenario: Login and go around
+    Given I navigated to Login page
+    When I fill email with default email
+    And I fill password with default password
+    And I click on Login button
+    Then I can see Engagement List page
+    Then I click on Engagement named: "abc"
+    And I should see Engagement Detail page of Engagement: "abc"
+    Then I click on To-Dos tab
+    And I should see To-Dos title
+    And I should see no To-Dos yet label
+
+  Scenario: Login and go to Contact page
+    Given I navigated to Login page
+    When I fill email with default email
+    And I fill password with default password
+    And I click on Login button
+    Then I can see Engagement List page
+    Then I click on Contacts Page link
+    And I can see Contacts Page
+
+  Scenario: Not Fail
+    Given I navigated to Login page
+    When I fill email with default email
+    And I fill password with default password
+    And I click on Login button
+    Then I can see Engagement List page
+    Then I click on Engagement named: "abc"
+    And I should see Engagement Detail page of Engagement: "abc"
+    Then I click on To-Dos tab
+
+  Scenario: Fail Scenario 1
+    Given I navigated to Login page
+    When I fill email with default email
+    And I fill password with default password
+    And I click on Login button
+    Then I can see Engagement List page
+    Then I click on Engagement named: "abc"
+    And I should see Engagement Detail page of Engagement: "abcde"
+
+  Scenario: Fail Scenario 2
+    Given I navigated to Login page
+    When I fill email with default email
+    And I fill password with default password
+    And I click on Login button
+    Then I can see Engagement List page
+    Then I click on Engagement named: "abc"
+    And I should see Engagement Detail page of Engagement: "abcd"
+    Then I click on To-Dos tab
+    And I should see To-Dos title
+    And I should see no To-Dos yet label
