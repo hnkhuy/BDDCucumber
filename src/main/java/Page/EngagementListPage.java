@@ -33,4 +33,8 @@ public class EngagementListPage extends AbstractPage {
         engagementNameList.stream().filter(engagement -> engagement.getText().equals(engagementName))
                 .forEach(WebElement::click);
     }
+
+    public void seeCreateEngagementButton() {
+        
+    }
 }

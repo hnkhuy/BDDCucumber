@@ -1,6 +1,7 @@
 package StepDefs;
 
 import Page.EngagementListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 
 /**
@@ -23,5 +24,10 @@ public class EngagementListStepDefs extends AbstractStepDefs {
     @Then("^I click on Engagement named: \"([^\"]*)\"$")
     public void clickOnEngagementNamed(String engagementName) throws Throwable {
         engagementListPage.clickOnEngagementNamed(engagementName);
+    }
+
+    @Then("^I can see Create Engagement button$")
+    public void seeCreateEngagementButton() throws Throwable {
+        engagementListPage.seeCreateEngagementButton();
     }
 }
