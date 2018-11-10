@@ -27,8 +27,12 @@ public class Actions {
         element.sendKeys(value);
     }
 
-    public boolean verifyElementExist(WebElement element, String elementName){
-        waitors.waitForVisibilityOf(element,elementName);
+    public boolean verifyElementExist(WebElement element, String elementName) {
+        waitors.waitForVisibilityOf(element, elementName);
         return element.isDisplayed();
+    }
+
+    public String getText(WebElement element, String elementName) {
+        return element.getText();
     }
 }

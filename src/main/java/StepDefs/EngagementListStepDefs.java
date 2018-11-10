@@ -1,7 +1,7 @@
 package StepDefs;
 
 import Page.EngagementListPage;
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 /**
@@ -29,5 +29,15 @@ public class EngagementListStepDefs extends AbstractStepDefs {
     @Then("^I can see Create Engagement button$")
     public void seeCreateEngagementButton() throws Throwable {
         engagementListPage.seeCreateEngagementButton();
+    }
+
+    @And("^I can see text of Create Engagement button: \"([^\"]*)\"$")
+    public void seeTextOfCreateEngagementButton(String buttonText) throws Throwable {
+        engagementListPage.seeTextOfCreateEngagementButton(buttonText);
+    }
+
+    @And("^I can see text color of Create Engagement button is white$")
+    public void seeTextColorOfCreateEngagementButtonIsWhite() throws Throwable {
+        engagementListPage.seeTextColorOfCreateEngagementButtonIsWhite();
     }
 }
