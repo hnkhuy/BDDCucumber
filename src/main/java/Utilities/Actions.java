@@ -1,8 +1,11 @@
 package Utilities;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 
 /**
@@ -11,8 +14,10 @@ import org.openqa.selenium.WebElement;
 public class Actions {
     private Logger logger = Loggger.getLogger(this.getClass());
     private Waitors waitors;
+    private WebDriver webDriver;
 
     public Actions(WebDriver driver) {
+        webDriver = driver;
         waitors = new Waitors(driver);
     }
 
@@ -34,5 +39,55 @@ public class Actions {
 
     public String getText(WebElement element, String elementName) {
         return element.getText();
+    }
+
+    /**
+     * get element which cant use @FindBy to find
+     *
+     * @param xpath xpath to get element
+     * @param arg   vararg for formating
+     */
+    public WebElement getElementByXpath(String xpath, String... arg) {
+        logger.info("Get Element by Xpath.");
+        WebElement webElement = null;
+        xpath = String.format(xpath, arg);
+        logger.info("xpath = " + xpath);
+        try {
+            webElement = webDriver.findElement(By.xpath(xpath));
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
+        }
+        return webElement;
+    }
+
+    /**
+     * get list elements which cant use @FindBy to find
+     *
+     * @param xpath xpath to get element
+     * @param arg   vararg for formating
+     */
+    public List<WebElement> getElementsByXpath(String xpath, String... arg) {
+        List<WebElement> webElements = null;
+        xpath = String.format(xpath, arg);
+        logger.info("xpaths = " + xpath);
+        try {
+            webElements = webDriver.findElements(By.xpath(xpath));
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
+        }
+        return webElements;
+    }
+
+    public WebElement getChildElementByXpath(WebElement ancestorElement, String xpath, String... arg) {
+        logger.info("Get Child Element by Xpath.");
+        WebElement webElement = null;
+        xpath = String.format(xpath, arg);
+        logger.info("xpath = " + xpath);
+        try {
+            webElement = ancestorElement.findElement(By.xpath(xpath));
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
+        }
+        return webElement;
     }
 }

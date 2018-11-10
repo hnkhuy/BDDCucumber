@@ -1,8 +1,12 @@
 package StepDefs;
 
 import Page.EngagementListPage;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huy.huynh on 13/09/2018.
@@ -39,5 +43,14 @@ public class EngagementListStepDefs extends AbstractStepDefs {
     @And("^I can see text color of Create Engagement button is white$")
     public void seeTextColorOfCreateEngagementButtonIsWhite() throws Throwable {
         engagementListPage.seeTextColorOfCreateEngagementButtonIsWhite();
+    }
+
+    @Then("^I can see Engagement and its status$")
+    public void seeEngagementAndItsStatus(DataTable engagementTable) throws Throwable {
+        List<Map<String, String>> list = engagementTable.asMaps(String.class, String.class);
+        for(int i=0; i<list.size(); i++) {
+            engagementListPage.seeEngagementAndItsStatus(list.get(i));
+        }
+
     }
 }

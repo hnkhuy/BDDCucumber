@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huy.huynh on 13/09/2018.
@@ -21,6 +22,10 @@ public class EngagementListPage extends AbstractPage {
 
     @FindBy(xpath = "//button[contains(@class,'newAuditBtn')]")
     private WebElement createEngagementButton;
+
+    private String engagementRowByNameXpath = "//div[contains(@class,'engagement-name')][text()='%s']/ancestor::tr";
+    private String statusByAncestorXpath = ".//span[contains(@class,'status')]";
+
 
     @Override
     protected void initPageFactory() {
@@ -51,5 +56,12 @@ public class EngagementListPage extends AbstractPage {
     public void seeTextColorOfCreateEngagementButtonIsWhite() {
         Assert.assertEquals(createEngagementButton.getCssValue("color"), Static.WHITE_COLOR_CODE,
                 "Expected Create Engagement Button color equal " + Static.WHITE_COLOR_CODE);
+    }
+
+    public void seeEngagementAndItsStatus(Map<String, String> rowMap) {
+        WebElement thisRow = actions.getElementByXpath(engagementRowByNameXpath, rowMap.get("EngagementName"));
+        WebElement status = actions.getChildElementByXpath(thisRow, statusByAncestorXpath);
+        Assert.assertEquals(actions.getText(status, "Status of engagement"), rowMap.get("Status"),
+                "Expected status of engagement " + rowMap.get("EngagementName") + " equal " + rowMap.get("Status"));
     }
 }
