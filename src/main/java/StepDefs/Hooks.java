@@ -32,7 +32,7 @@ public class Hooks {
 
     @After(order = 0)
     public void afterScenario() throws Exception {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         WebDriverCenter.quitPrimaryWebDriver();
     }
 
