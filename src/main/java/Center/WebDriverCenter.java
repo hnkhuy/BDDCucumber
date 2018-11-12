@@ -47,8 +47,8 @@ public class WebDriverCenter {
     }
 
     public static boolean getPrimaryWebDriverStatus() {
-        if(isPrimaryDriverJustChanged){
-            isPrimaryDriverJustChanged=false;
+        if (isPrimaryDriverJustChanged) {
+            isPrimaryDriverJustChanged = false;
             return true;
         }
         return isPrimaryDriverJustChanged;

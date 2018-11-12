@@ -1,7 +1,6 @@
 package StepDefs;
 
 import Page.HeaderContainerPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 
 public class HeaderContainerStepDefs extends AbstractStepDefs {

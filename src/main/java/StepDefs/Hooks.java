@@ -23,7 +23,7 @@ public class Hooks {
         WebDriverCenter.setupPrimaryWebDriver();
         if (scenario.getName().contains("hnkhuy")) {
             Reporter.assignAuthor("hnkhuy");
-        } else if(scenario.getName().contains("huyhuynhz")){
+        } else if (scenario.getName().contains("huyhuynhz")) {
             Reporter.assignAuthor("huyhuynhz");
         } else {
             Reporter.assignAuthor("Other");
@@ -32,6 +32,7 @@ public class Hooks {
 
     @After(order = 0)
     public void afterScenario() throws Exception {
+        Thread.sleep(2000);
         WebDriverCenter.quitPrimaryWebDriver();
     }
 

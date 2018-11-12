@@ -1,14 +1,21 @@
 package StepDefs;
 
-import cucumber.api.PendingException;
+import Page.ToDosPage;
 import cucumber.api.java.en.Then;
 
 import java.util.List;
 
-public class ToDosStepDefs {
+public class ToDosStepDefs extends AbstractStepDefs {
 
-    @Then("^I should see Todos on Todo page: \"([^\"]*)\"$/")
-    public void iShouldSeeTodosOnTodoPageToDos(List<String> testData) throws Throwable {
-        testData.stream().forEach(System.out::print);
+    private ToDosPage toDosPage;
+
+    @Override
+    protected void initPages() {
+        toDosPage = new ToDosPage();
+    }
+
+    @Then("^I should see Todos on Todo page: (.*)")
+    public void seeTodosOnTodoPageToDos(List<String> todos) throws Throwable {
+        toDosPage.seeTodosOnTodoPageToDos(todos);
     }
 }

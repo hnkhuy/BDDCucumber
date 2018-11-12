@@ -15,7 +15,7 @@ Feature: Todos Feature
     And I should see To-Dos title
     Then I should see Todos on Todo page: <ToDos>
     Examples:
-      | EngagementName    | ToDos                |
+      | EngagementName    | ToDos                  |
       | abc               | abc.todo1, abc.todo2   |
       | Per Engagement 01 | pe01.todo1, pe01.todo2 |
       | Nhu engagement 1  | ne1.todo1, ne1.todo2   |

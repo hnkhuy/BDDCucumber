@@ -1,7 +1,6 @@
 package StepDefs;
 
 import Page.ContactsPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 
 public class ContactsStepDefs extends AbstractStepDefs {
