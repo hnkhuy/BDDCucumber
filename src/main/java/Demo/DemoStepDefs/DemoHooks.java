@@ -11,7 +11,7 @@ public class DemoHooks {
     private static Logger logger = Loggger.getLogger(DemoHooks.class);
 
     @Before
-    public void beforeScenario(Scenario scenario) {
+    public void beforeScenario(Scenario scenario) throws Exception {
         logger.info("--------------------Start Scenario \"" + scenario.getName() + "\"--------------------");
         WebDriverCenter.setupPrimaryWebDriver();
     }

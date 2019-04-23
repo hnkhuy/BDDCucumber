@@ -18,16 +18,24 @@ public class WebDriverCenter {
     private static WebDriver webDriver;
     private static Logger logger = Loggger.getLogger(WebDriverCenter.class);
     private static boolean isPrimaryDriverJustChanged = false;
+    private static String osDriverTail = "";
 
-    private static ChromeOptions setupChromeWebDriver() {
+    private static ChromeOptions setupChromeWebDriver() throws Exception {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
         options.addArguments("start-maximized");
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            osDriverTail = "/chromedriver";
+        } else if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            osDriverTail = "\\chromedriver.exe";
+        } else {
+            throw new Exception("Cannot detect chromedriver for current OS!");
+        }
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + osDriverTail);
         return options;
     }
 
-    public static void setupPrimaryWebDriver() {
+    public static void setupPrimaryWebDriver() throws Exception {
         //init with chrome- multi browser later
         webDriver = new ChromeDriver(setupChromeWebDriver());
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

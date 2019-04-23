@@ -18,7 +18,7 @@ public class Hooks {
     private static Logger logger = Loggger.getLogger(Hooks.class);
 
     @Before
-    public void beforeScenario(Scenario scenario) {
+    public void beforeScenario(Scenario scenario) throws Exception {
         logger.info("--------------------Start Scenario \"" + scenario.getName() + "\"--------------------");
         WebDriverCenter.setupPrimaryWebDriver();
         if (scenario.getName().contains("hnkhuy")) {
