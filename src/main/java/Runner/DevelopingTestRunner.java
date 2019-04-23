@@ -14,7 +14,7 @@ import java.io.File;
  * Created by huy.huynh on 13/09/2018.
  */
 @CucumberOptions(features = "src/main/resources/features/", glue = {"StepDefs"}, plugin = {"com.cucumber.listener" +
-        ".ExtentCucumberFormatter:target/cucumber-reports/report.html"}, tags = {"@Developing"})
+        ".ExtentCucumberFormatter:target/cucumber-reports/report.html"}, tags = {"@LINEDeveloping"})
 public class DevelopingTestRunner extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void setupSomething() throws Exception {
