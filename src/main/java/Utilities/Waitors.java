@@ -34,6 +34,12 @@ public class Waitors {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
+    public void waitUntilPageTitleBeChanged(String title) {
+        logger.info("Waiting until page title be changed");
+        WebDriverWait wait = new WebDriverWait(webDriver, 5);
+        wait.until(ExpectedConditions.titleContains(title));
+    }
+
     public void waitForVisibilityOf(WebElement webElement, String elementName) {
         logger.info("Waiting for Visibility of element: " + elementName);
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, Static.EXPLITCIT_TIMEOUT_IN_SECONDS);

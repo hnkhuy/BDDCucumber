@@ -1,12 +1,12 @@
 Feature: LINE Demo Feature
 
-#  Background: Login success
-#    Given I navigated to LINE Business ID page
-#    When I click on Log in with LINE account button
-#    Then I navigated to LINE Login page
-#    And I fill email with LINE default email
-#    And I fill password with LINE default password
-#    Then I click on LINE Login button
+  Background: Login success
+    Given I navigated to LINE Business ID page
+    When I click on Log in with LINE account button
+    Then I navigated to LINE Login page
+    And I fill email with LINE default email
+    And I fill password with LINE default password
+    Then I click on LINE Login button
 
 #  Background: Login success
 #    Given I navigated to LINE Business ID page
@@ -24,4 +24,4 @@ Feature: LINE Demo Feature
 
   @LINEDeveloping
   Scenario: First first
-    Given I navigated to LINE Business ID page
+    Given I navigated to LINE Official Account Manager
