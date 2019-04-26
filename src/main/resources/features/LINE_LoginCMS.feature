@@ -8,6 +8,7 @@ Feature: LINE Demo Feature
     And I fill password with LINE default password
     Then I click on LINE Login button
 
+
 #  Background: Login success
 #    Given I navigated to LINE Business ID page
 #    Given I navigated to Login page
@@ -23,5 +24,20 @@ Feature: LINE Demo Feature
 #    And I can see text color of Create Engagement button is white
 
   @LINEDeveloping
-  Scenario: First first
+  Scenario: First first - andrew.huynh
     Given I navigated to LINE Official Account Manager
+    When I click account name: nap_qa_test15 on list account
+    Then I navigated to Account Page Settings of: nap_qa_test15
+    And I click on Add Plugin button
+    And I select to add Collection plugin
+    Then I navigated to Collection plugin page
+    And I fill Collection items with given title and description
+      | ItemAtosition | ItemTitle | ItemDescription |
+      | 1             | Item1     | Des1            |
+      | 2             | Item2     | Des2            |
+      | 3             | Item3     | Des3            |
+    And I fill Collection plugin title
+    And I click on Save plugin button
+    And I activate this plugin to Publish
+    And I click on Publish button
+

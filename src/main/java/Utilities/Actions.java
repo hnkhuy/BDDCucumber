@@ -2,6 +2,7 @@ package Utilities;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -89,5 +90,11 @@ public class Actions {
             logger.info(ex.getMessage());
         }
         return webElement;
+    }
+
+    public String getTextFromCSSPropertyWebElement(String id) {
+        String script = "return window.getComputedStyle(document.querySelector('#" + id + "'),':before').getPropertyValue('content')";
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        return (String) js.executeScript(script);
     }
 }
