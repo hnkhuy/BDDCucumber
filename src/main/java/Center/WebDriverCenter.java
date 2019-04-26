@@ -23,12 +23,14 @@ public class WebDriverCenter {
     private static ChromeOptions setupChromeWebDriver() throws Exception {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
-        options.addArguments("start-maximized");
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             osDriverTail = "/chromedriver";
+            options.addArguments("--start-fullscreen");
         } else if (System.getProperty("os.name").toLowerCase().contains("win")) {
             osDriverTail = "\\chromedriver.exe";
+            options.addArguments("--start-maximized");
         } else {
+            //add an 'if' here if u run it on linux
             throw new Exception("Cannot detect chromedriver for current OS!");
         }
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + osDriverTail);
