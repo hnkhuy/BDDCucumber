@@ -3,6 +3,7 @@ package Page;
 import Utilities.Actions;
 import Utilities.Loggger;
 import Utilities.Waitors;
+import io.appium.java_client.AppiumDriver;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public abstract class AbstractPage {
     protected Logger logger = Loggger.getLogger(this.getClass());
     protected static Actions actions;
     protected static Waitors waitors;
+    protected AppiumDriver appiumDriver;
 
     public AbstractPage() {
         if (getPrimaryWebDriverStatus()) {

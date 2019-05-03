@@ -25,7 +25,7 @@ public class WebDriverCenter {
     private static boolean isPrimaryDriverJustChanged = false;
     private static String osDriverTail = "";
     private static AppiumDriverLocalService appiumService = null;
-    private static AppiumDriver appiumDriver;
+    private static AppiumDriver appiumDriver = null;
 
     private static ChromeOptions setupChromeWebDriver() throws Exception {
         ChromeOptions options = new ChromeOptions();
@@ -87,12 +87,13 @@ public class WebDriverCenter {
     }
 
     public static void stopAppiumServer() {
+        quitPrimaryAppiumDriver();
         if (appiumService != null && appiumService.isRunning()) {
             appiumService.stop();
         }
     }
 
-    public static void setupPrimaryAppiumDriver() throws Exception {
+    public static AppiumDriver setupPrimaryAppiumDriver() throws Exception {
         //hardcode for single android - multi mobile driver later
         File appDir = new File(System.getProperty("user.dir") + "/src/main/resources/private/");
         File newApp = new File(appDir, "line-9_4_2-beta.apk");
@@ -109,5 +110,12 @@ public class WebDriverCenter {
 
 //        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        return appiumDriver;
+    }
+
+    public static void quitPrimaryAppiumDriver() {
+        if (appiumDriver != null) {
+            appiumDriver.quit();
+        }
     }
 }

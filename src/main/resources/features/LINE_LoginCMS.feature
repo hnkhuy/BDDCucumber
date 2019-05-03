@@ -40,4 +40,6 @@ Feature: LINE Demo Feature
     And I click on Save plugin button
     And I activate this plugin to Publish
     And I click on Publish button
+    Then I open Line app on primary device
+    And I click on Start button on Welcome LINE app
 

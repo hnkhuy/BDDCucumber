@@ -36,6 +36,7 @@ public class Hooks {
     public void afterScenario() throws Exception {
         Thread.sleep(1000);
         WebDriverCenter.quitPrimaryWebDriver();
+        WebDriverCenter.stopAppiumServer();
     }
 
     @After(order = 1)
