@@ -1,11 +1,16 @@
 package Center;
 
 import Utilities.Loggger;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -19,13 +24,15 @@ public class WebDriverCenter {
     private static Logger logger = Loggger.getLogger(WebDriverCenter.class);
     private static boolean isPrimaryDriverJustChanged = false;
     private static String osDriverTail = "";
+    private static AppiumDriverLocalService appiumService = null;
+    private static AppiumDriver appiumDriver;
 
     private static ChromeOptions setupChromeWebDriver() throws Exception {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             osDriverTail = "/chromedriver";
-            options.addArguments("--start-fullscreen");
+//            options.addArguments("--start-fullscreen");
         } else if (System.getProperty("os.name").toLowerCase().contains("win")) {
             osDriverTail = "\\chromedriver.exe";
             options.addArguments("--start-maximized");
@@ -72,5 +79,35 @@ public class WebDriverCenter {
             e.printStackTrace();
         }
         webDrivers.forEach(driver -> driver.quit());
+    }
+
+    public static void startAppiumServer() {
+        appiumService = AppiumDriverLocalService.buildDefaultService();
+        appiumService.start();
+    }
+
+    public static void stopAppiumServer() {
+        if (appiumService != null && appiumService.isRunning()) {
+            appiumService.stop();
+        }
+    }
+
+    public static void setupPrimaryAppiumDriver() throws Exception {
+        //hardcode for single android - multi mobile driver later
+        File appDir = new File(System.getProperty("user.dir") + "/src/main/resources/private/");
+        File newApp = new File(appDir, "line-9_4_2-beta.apk");
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        capabilities.setCapability("device", "Android");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "Galaxy Note9");
+
+        capabilities.setCapability("appPackage", "jp.naver.line.android");
+        capabilities.setCapability("appActivity", ".activity.SplashActivity");
+        capabilities.setCapability("app", newApp.getAbsolutePath());
+
+//        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 }
