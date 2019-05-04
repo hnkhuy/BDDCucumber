@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class ToDosPage extends AbstractPage {
+public class ToDosWebPage extends AbstractWebPage {
 
     private String todoByNameXpath = "//div[contains(@class,'cell-name')][text()='%s']";
 

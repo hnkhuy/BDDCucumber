@@ -1,15 +1,15 @@
 package StepDefs;
 
-import Page.ContactsPage;
+import Page.ContactsWebPage;
 import cucumber.api.java.en.And;
 
 public class ContactsStepDefs extends AbstractStepDefs {
 
-    private ContactsPage contactsPage;
+    private ContactsWebPage contactsPage;
 
     @Override
     protected void initPages() {
-        contactsPage = new ContactsPage();
+        contactsPage = new ContactsWebPage();
     }
 
     @And("^I can see Contacts Page$")

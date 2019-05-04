@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Map;
 
-public class LINEAccountPageSettingsPage extends AbstractPage {
+public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
 
     @FindBy(id = "topAccountName")
     private WebElement previewAccountName;

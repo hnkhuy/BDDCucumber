@@ -34,7 +34,7 @@ public class DevelopingTestRunner extends AbstractTestNGCucumberTests {
 
     @AfterTest
     public void tearDownTest() {
-        //        WebDriverCenter.quitAllDriver();
+        //        DriverCenter.quitAllDriver();
         PropertiesFileReader.closePropertiesFileInputStream();
     }
 }

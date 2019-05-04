@@ -14,13 +14,13 @@ import org.testng.annotations.BeforeTest;
 public class DemoTestRunner extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void setupSomething() throws Exception {
-//        WebDriverCenter.setupPrimaryWebDriver();
+//        DriverCenter.setupPrimaryWebDriver();
         DemoPropertiesFileReader.openFileProperty();
     }
 
     @AfterTest
     public void tearDownTest() {
-//        WebDriverCenter.quitAllDriver();
+//        DriverCenter.quitAllDriver();
         DemoPropertiesFileReader.closePropertiesFileInputStream();
     }
 }

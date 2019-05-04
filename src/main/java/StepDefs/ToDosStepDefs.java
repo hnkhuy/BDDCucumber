@@ -1,17 +1,17 @@
 package StepDefs;
 
-import Page.ToDosPage;
+import Page.ToDosWebPage;
 import cucumber.api.java.en.Then;
 
 import java.util.List;
 
 public class ToDosStepDefs extends AbstractStepDefs {
 
-    private ToDosPage toDosPage;
+    private ToDosWebPage toDosPage;
 
     @Override
     protected void initPages() {
-        toDosPage = new ToDosPage();
+        toDosPage = new ToDosWebPage();
     }
 
     @Then("^I should see Todos on Todo page: (.*)")

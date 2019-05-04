@@ -1,6 +1,6 @@
 package StepDefs;
 
-import Page.LINEAccountPageSettingsPage;
+import Page.LINEAccountPageSettingsWebPage;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -8,11 +8,11 @@ import cucumber.api.java.en.When;
 
 public class LINEAccountPageSettingsStepDefs extends AbstractStepDefs {
 
-    private LINEAccountPageSettingsPage lineAccountPageSettingsPage;
+    private LINEAccountPageSettingsWebPage lineAccountPageSettingsPage;
 
     @Override
     protected void initPages() {
-        lineAccountPageSettingsPage = new LINEAccountPageSettingsPage();
+        lineAccountPageSettingsPage = new LINEAccountPageSettingsWebPage();
     }
 
     @When("^I click account name: (.*) on list account$")

@@ -1,6 +1,6 @@
 package Demo.DemoStepDefs;
 
-import Demo.DemoPage.GoogleLoginPage;
+import Demo.DemoPage.GoogleLoginWebPage;
 import StepDefs.AbstractStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -12,11 +12,11 @@ import cucumber.api.java.en.When;
  */
 public class GoogleLoginStepDef extends AbstractStepDefs {
 
-    private GoogleLoginPage googleLoginPage;
+    private GoogleLoginWebPage googleLoginPage;
 
     @Override
     protected void initPages() {
-        googleLoginPage = new GoogleLoginPage();
+        googleLoginPage = new GoogleLoginWebPage();
     }
 
     @Given("^I navigated to Google Login page$")

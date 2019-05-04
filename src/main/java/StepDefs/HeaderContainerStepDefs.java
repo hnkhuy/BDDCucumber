@@ -1,15 +1,15 @@
 package StepDefs;
 
-import Page.HeaderContainerPage;
+import Page.HeaderContainerWebPage;
 import cucumber.api.java.en.Then;
 
 public class HeaderContainerStepDefs extends AbstractStepDefs {
 
-    private HeaderContainerPage headerContainerPage;
+    private HeaderContainerWebPage headerContainerPage;
 
     @Override
     protected void initPages() {
-        headerContainerPage = new HeaderContainerPage();
+        headerContainerPage = new HeaderContainerWebPage();
     }
 
     @Then("^I click on Contacts Page link$")

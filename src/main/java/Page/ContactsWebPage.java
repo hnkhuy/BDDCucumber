@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class ContactsPage extends AbstractPage {
+public class ContactsWebPage extends AbstractWebPage {
 
     @FindBy(id = "c-header-title")
     private WebElement pageHeaderTitle;

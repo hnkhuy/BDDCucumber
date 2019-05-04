@@ -1,6 +1,6 @@
 package StepDefs;
 
-import Page.EngagementDetailsPage;
+import Page.EngagementDetailsWebPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
@@ -9,11 +9,11 @@ import cucumber.api.java.en.Then;
  */
 public class EngagementDetailsStepdefs extends AbstractStepDefs {
 
-    private EngagementDetailsPage engagementDetailsPage;
+    private EngagementDetailsWebPage engagementDetailsPage;
 
     @Override
     protected void initPages() {
-        engagementDetailsPage = new EngagementDetailsPage();
+        engagementDetailsPage = new EngagementDetailsWebPage();
     }
 
     @And("^I should see Engagement Detail page of Engagement: \"([^\"]*)\"$")

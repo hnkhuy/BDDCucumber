@@ -1,6 +1,6 @@
 package StepDefs;
 
-import Center.WebDriverCenter;
+import Center.DriverCenter;
 import Utilities.GeneralUtilities;
 import Utilities.Loggger;
 import com.cucumber.listener.Reporter;
@@ -20,7 +20,7 @@ public class Hooks {
     @Before
     public void beforeScenario(Scenario scenario) throws Exception {
         logger.info("--------------------Start Scenario \"" + scenario.getName() + "\"--------------------");
-        WebDriverCenter.setupPrimaryWebDriver();
+        DriverCenter.setupPrimaryWebDriver();
         if (scenario.getName().contains("hnkhuy")) {
             Reporter.assignAuthor("hnkhuy");
         } else if (scenario.getName().contains("huyhuynhz")) {
@@ -35,8 +35,8 @@ public class Hooks {
     @After(order = 0)
     public void afterScenario() throws Exception {
         Thread.sleep(1000);
-        WebDriverCenter.quitPrimaryWebDriver();
-        WebDriverCenter.stopAppiumServer();
+        DriverCenter.quitPrimaryWebDriver();
+        DriverCenter.stopAppiumServer();
     }
 
     @After(order = 1)
@@ -46,7 +46,7 @@ public class Hooks {
                     .getTimeStampForNameSuffix();
             try {
                 //This takes a screenshot from the driver at save it to the specified location
-                File sourcePath = ((TakesScreenshot) WebDriverCenter.getPrimaryWebDriver())
+                File sourcePath = ((TakesScreenshot) DriverCenter.getPrimaryWebDriver())
                         .getScreenshotAs(OutputType.FILE);
 
                 //Building up the destination path for the screenshot to save

@@ -1,7 +1,7 @@
 package Demo.DemoPage;
 
 import Demo.DemoUtilities.DemoPropertiesFileReader;
-import Page.AbstractPage;
+import Page.AbstractWebPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +10,7 @@ import org.testng.Assert;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleLoginPage extends AbstractPage {
+public class GoogleLoginWebPage extends AbstractWebPage {
 
     @FindBy(xpath = "//input[@type='email']")
     private WebElement emailTextbox;

@@ -1,16 +1,16 @@
 package StepDefs;
 
-import Page.LINENavigateToUITPage;
+import Page.LINENavigateToUITWebPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 public class LINENavigateToUITStepDefs extends AbstractStepDefs {
 
-    private LINENavigateToUITPage lineNavigateToUITPage;
+    private LINENavigateToUITWebPage lineNavigateToUITPage;
 
     @Override
     protected void initPages() {
-        lineNavigateToUITPage = new LINENavigateToUITPage();
+        lineNavigateToUITPage = new LINENavigateToUITWebPage();
     }
 
     @Then("^I open Line app on primary device$")

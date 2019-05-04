@@ -18,14 +18,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class WebDriverCenter {
+public class DriverCenter {
     private static List<WebDriver> webDrivers = new ArrayList<WebDriver>();
     private static WebDriver webDriver;
-    private static Logger logger = Loggger.getLogger(WebDriverCenter.class);
-    private static boolean isPrimaryDriverJustChanged = false;
+    private static Logger logger = Loggger.getLogger(DriverCenter.class);
+    private static boolean isPrimaryWebDriverJustChanged = false;
     private static String osDriverTail = "";
     private static AppiumDriverLocalService appiumService = null;
     private static AppiumDriver appiumDriver = null;
+    private static boolean isPrimaryAppiumDriverJustChanged = false;
+
 
     private static ChromeOptions setupChromeWebDriver() throws Exception {
         ChromeOptions options = new ChromeOptions();
@@ -48,7 +50,7 @@ public class WebDriverCenter {
         //init with chrome- multi browser later
         webDriver = new ChromeDriver(setupChromeWebDriver());
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        isPrimaryDriverJustChanged = true;
+        isPrimaryWebDriverJustChanged = true;
     }
 
     public static WebDriver getPrimaryWebDriver() throws Exception {
@@ -64,11 +66,11 @@ public class WebDriverCenter {
     }
 
     public static boolean getPrimaryWebDriverStatus() {
-        if (isPrimaryDriverJustChanged) {
-            isPrimaryDriverJustChanged = false;
+        if (isPrimaryWebDriverJustChanged) {
+            isPrimaryWebDriverJustChanged = false;
             return true;
         }
-        return isPrimaryDriverJustChanged;
+        return isPrimaryWebDriverJustChanged;
     }
 
     public static void quitAllDriver() {
@@ -93,8 +95,7 @@ public class WebDriverCenter {
         }
     }
 
-    public static AppiumDriver setupPrimaryAppiumDriver() throws Exception {
-        //hardcode for single android - multi mobile driver later
+    public static DesiredCapabilities setupAppiumCapabilities() {
         File appDir = new File(System.getProperty("user.dir") + "/src/main/resources/private/");
         File newApp = new File(appDir, "line-9_4_2-beta.apk");
 
@@ -108,9 +109,22 @@ public class WebDriverCenter {
         capabilities.setCapability("appActivity", ".activity.SplashActivity");
         capabilities.setCapability("app", newApp.getAbsolutePath());
 
-//        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        return appiumDriver;
+        return capabilities;
+    }
+
+    public static void setupPrimaryAppiumDriver() throws Exception {
+        //hardcode for single android - multi mobile driver later
+        appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), setupAppiumCapabilities());
+        appiumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        isPrimaryAppiumDriverJustChanged = true;
+    }
+
+    public static AppiumDriver getPrimaryAppiumDriver() throws Exception {
+        if (appiumDriver != null) {
+            return appiumDriver;
+        }
+        logger.error("AppiumDriver need to be setup first");
+        throw new Exception("AppiumDriver need to be setup first");
     }
 
     public static void quitPrimaryAppiumDriver() {

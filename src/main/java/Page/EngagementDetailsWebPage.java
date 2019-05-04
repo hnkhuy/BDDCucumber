@@ -8,7 +8,7 @@ import org.testng.Assert;
 /**
  * Created by huy.huynh on 21/09/2018.
  */
-public class EngagementDetailsPage extends AbstractPage {
+public class EngagementDetailsWebPage extends AbstractWebPage {
 
     @FindBy(tagName = "h1")
     private WebElement engagementNameTitle;

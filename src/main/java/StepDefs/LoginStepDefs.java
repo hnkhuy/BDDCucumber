@@ -1,6 +1,6 @@
 package StepDefs;
 
-import Page.LoginPage;
+import Page.LoginWebPage;
 import com.cucumber.listener.Reporter;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -12,11 +12,11 @@ import cucumber.api.java.en.When;
  */
 public class LoginStepDefs extends AbstractStepDefs {
 
-    private LoginPage loginPage;
+    private LoginWebPage loginPage;
 
     @Override
     protected void initPages() {
-        loginPage = new LoginPage();
+        loginPage = new LoginWebPage();
     }
 
     @Given("^I navigated to Login page$")

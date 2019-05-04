@@ -1,13 +1,13 @@
 package Page;
 
-import Center.WebDriverCenter;
+import Center.DriverCenter;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LINENavigateToUITPage extends AbstractPage {
+public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
     @FindBy(id = "next")
     private WebElement startButton;
@@ -16,15 +16,17 @@ public class LINENavigateToUITPage extends AbstractPage {
     private WebElement startButton2;
 
     @Override
+    protected void setUpAppiumDriver() throws Exception {
+        DriverCenter.setupPrimaryAppiumDriver();
+    }
+
+    @Override
     protected void initPageFactory() {
-        PageFactory.initElements(webDriver, this);
+        PageFactory.initElements(appiumDriver, this);
     }
 
     public void openLineAppOnPrimaryDevice() throws Exception {
-//        WebDriverCenter.startAppiumServer();
-
-        appiumDriver = WebDriverCenter.setupPrimaryAppiumDriver();
-
+//        DriverCenter.startAppiumServer();
     }
 
     public void clickOnStartButtonOnWelcomeLINEApp() {

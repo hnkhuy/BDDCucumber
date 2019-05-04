@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by huy.huynh on 13/09/2018.
  */
-public class EngagementListPage extends AbstractPage {
+public class EngagementListWebPage extends AbstractWebPage {
 
     @FindBy(className = "pageHeader-title")
     private WebElement pageHeaderTitle;

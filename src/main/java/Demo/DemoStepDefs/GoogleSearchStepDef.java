@@ -1,6 +1,6 @@
 package Demo.DemoStepDefs;
 
-import Demo.DemoPage.GoogleSearchPage;
+import Demo.DemoPage.GoogleSearchWebPage;
 import StepDefs.AbstractStepDefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -12,11 +12,11 @@ import cucumber.api.java.en.When;
  */
 public class GoogleSearchStepDef extends AbstractStepDefs {
 
-    private GoogleSearchPage googleSearchPage;
+    private GoogleSearchWebPage googleSearchPage;
 
     @Override
     protected void initPages() {
-        googleSearchPage = new GoogleSearchPage();
+        googleSearchPage = new GoogleSearchWebPage();
     }
 
     @Given("^I navigated to Google seach page$")

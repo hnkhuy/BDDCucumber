@@ -1,6 +1,6 @@
 package Demo.DemoPage;
 
-import Page.AbstractPage;
+import Page.AbstractWebPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 /**
  * Created by huy.huynh on 12/09/2018.
  */
-public class GoogleSearchPage extends AbstractPage {
+public class GoogleSearchWebPage extends AbstractWebPage {
 
     @FindBy(id = "lst-ib")
     private WebElement searchTextbox;

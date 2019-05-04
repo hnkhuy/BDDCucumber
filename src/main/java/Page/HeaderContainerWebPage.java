@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HeaderContainerPage extends AbstractPage {
+public class HeaderContainerWebPage extends AbstractWebPage {
 
     @FindBy(id = "h-clientListLink")
     private WebElement contactsPageLink;

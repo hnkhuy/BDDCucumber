@@ -1,6 +1,6 @@
 package Demo.DemoStepDefs;
 
-import Center.WebDriverCenter;
+import Center.DriverCenter;
 import Utilities.Loggger;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -13,11 +13,11 @@ public class DemoHooks {
     @Before
     public void beforeScenario(Scenario scenario) throws Exception {
         logger.info("--------------------Start Scenario \"" + scenario.getName() + "\"--------------------");
-        WebDriverCenter.setupPrimaryWebDriver();
+        DriverCenter.setupPrimaryWebDriver();
     }
 
     @After
     public void afterScenario() throws Exception {
-        WebDriverCenter.quitPrimaryWebDriver();
+        DriverCenter.quitPrimaryWebDriver();
     }
 }

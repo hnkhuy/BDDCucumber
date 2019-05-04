@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by huy.huynh on 22/08/2018.
  */
-public class LoginPage extends AbstractPage {
+public class LoginWebPage extends AbstractWebPage {
 
     @FindBy(id = "login-email")
     private WebElement emailTextbox;

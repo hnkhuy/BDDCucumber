@@ -1,6 +1,6 @@
 package StepDefs;
 
-import Page.EngagementListPage;
+import Page.EngagementListWebPage;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -13,11 +13,11 @@ import java.util.Map;
  */
 public class EngagementListStepDefs extends AbstractStepDefs {
 
-    private EngagementListPage engagementListPage;
+    private EngagementListWebPage engagementListPage;
 
     @Override
     protected void initPages() {
-        engagementListPage = new EngagementListPage();
+        engagementListPage = new EngagementListWebPage();
     }
 
     @Then("^I can see Engagement List page$")
