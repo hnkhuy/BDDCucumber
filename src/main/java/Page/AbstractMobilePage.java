@@ -6,7 +6,7 @@ import Utilities.Waitors;
 import io.appium.java_client.AppiumDriver;
 import org.apache.logging.log4j.Logger;
 
-import static Center.DriverCenter.getPrimaryWebDriverStatus;
+import static Center.DriverCenter.getPrimaryAppiumDriverStatus;
 import static Center.DriverCenter.setupPrimaryAppiumDriver;
 
 /**
@@ -19,7 +19,7 @@ public abstract class AbstractMobilePage {
     protected static Waitors waitors;
 
     public AbstractMobilePage() {
-        if (getPrimaryWebDriverStatus()) {
+        if (getPrimaryAppiumDriverStatus()) {
             try {
                 appiumDriver = setupPrimaryAppiumDriver();
                 waitors = new Waitors(appiumDriver);

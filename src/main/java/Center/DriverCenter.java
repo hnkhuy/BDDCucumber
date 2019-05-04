@@ -24,6 +24,7 @@ public class DriverCenter {
     private static Logger logger = Loggger.getLogger(DriverCenter.class);
     private static boolean isPrimaryWebDriverJustChanged = false;
     private static String osDriverTail = "";
+
     private static AppiumDriverLocalService appiumService = null;
     private static AppiumDriver appiumDriver = null;
     private static boolean isPrimaryAppiumDriverJustChanged = false;
@@ -95,7 +96,7 @@ public class DriverCenter {
         }
     }
 
-    public static DesiredCapabilities setupAppiumCapabilities() {
+    private static DesiredCapabilities setupAppiumCapabilities() {
         File appDir = new File(System.getProperty("user.dir") + "/src/main/resources/private/");
         File newApp = new File(appDir, "line-9_4_2-beta.apk");
 
@@ -132,5 +133,13 @@ public class DriverCenter {
         if (appiumDriver != null) {
             appiumDriver.quit();
         }
+    }
+
+    public static boolean getPrimaryAppiumDriverStatus() {
+        if (isPrimaryAppiumDriverJustChanged) {
+            isPrimaryAppiumDriverJustChanged = false;
+            return true;
+        }
+        return isPrimaryAppiumDriverJustChanged;
     }
 }
