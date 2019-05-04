@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -36,6 +37,10 @@ public class Actions {
     public boolean verifyElementExist(WebElement element, String elementName) {
         waitors.waitForVisibilityOf(element, elementName);
         return element.isDisplayed();
+    }
+
+    public void verifyElementTextEqual(WebElement element, String expectedElementText, String elementName) {
+        Assert.assertEquals(element.getText(), expectedElementText, elementName);
     }
 
     public String getText(WebElement element, String elementName) {

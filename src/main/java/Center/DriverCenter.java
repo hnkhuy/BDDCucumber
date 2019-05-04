@@ -27,7 +27,7 @@ public class DriverCenter {
 
     private static AppiumDriverLocalService appiumService = null;
     private static AppiumDriver appiumDriver = null;
-    private static boolean isPrimaryAppiumDriverJustChanged = false;
+    private static boolean isPrimaryAppiumDriverNeedToBeInit = true;
 
 
     private static ChromeOptions setupChromeWebDriver() throws Exception {
@@ -117,7 +117,7 @@ public class DriverCenter {
         //hardcode for single android - multi mobile driver later
         appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), setupAppiumCapabilities());
         appiumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        isPrimaryAppiumDriverJustChanged = true;
+        isPrimaryAppiumDriverNeedToBeInit = true;
         return appiumDriver;
     }
 
@@ -136,10 +136,10 @@ public class DriverCenter {
     }
 
     public static boolean getPrimaryAppiumDriverStatus() {
-        if (isPrimaryAppiumDriverJustChanged) {
-            isPrimaryAppiumDriverJustChanged = false;
+        if (isPrimaryAppiumDriverNeedToBeInit) {
+            isPrimaryAppiumDriverNeedToBeInit = false;
             return true;
         }
-        return isPrimaryAppiumDriverJustChanged;
+        return isPrimaryAppiumDriverNeedToBeInit;
     }
 }

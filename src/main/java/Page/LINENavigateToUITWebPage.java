@@ -1,18 +1,77 @@
 package Page;
 
-import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
+import Utilities.PropertiesFileReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
-    @FindBy(id = "next")
-    private WebElement startButton;
+    @FindBy(id = "jp.naver.line.android:id/header")
+    private WebElement welcomeTitle;
 
-    @FindBy(linkText = "Start")
-    private WebElement startButton2;
+    @FindBy(id = "jp.naver.line.android:id/next")
+    private WebElement nextButton;
+
+    @FindBy(id = "jp.naver.line.android:id/common_dialog_cancel_btn")
+    private WebElement dialogCancelButton;
+
+    @FindBy(id = "jp.naver.line.android:id/common_dialog_ok_btn")
+    private WebElement dialogOKButton;
+
+    @FindBy(id = "jp.naver.line.android:id/edit_text")
+    private WebElement phoneNumerEditText;
+
+    @FindBy(id = "jp.naver.line.android:id/code_verification_real")
+    private WebElement codeVerification;
+
+    @FindBy(id = "jp.naver.line.android:id/skip_button")
+    private WebElement skipButton;
+
+    @FindBy(id = "jp.naver.line.android:id/skip")
+    private WebElement skipButton2;
+
+//    @FindBy(id = "jp.naver.line.android:id/common_dialog_title_message")
+//    private WebElement startButton4;
+//
+//    @FindBy(id = "jp.naver.line.android:id/common_dialog_background")
+//    private WebElement startButton3;
+
+    @FindBy(id = "jp.naver.line.android:id/country_code")
+    private WebElement countrySelect;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@text,'Japan')]")
+    private WebElement japanCountryItem;
+
+    @FindBy(id = "next")
+    private WebElement startButton4;
+
+    @FindBy(id = "next")
+    private WebElement startButton5;
+
+    @FindBy(id = "next")
+    private WebElement startButton6;
+
+    @FindBy(id = "next")
+    private WebElement startButton7;
+
+    @FindBy(id = "next")
+    private WebElement startButton8;
+
+    @FindBy(id = "next")
+    private WebElement startButto9;
+
+    @FindBy(id = "next")
+    private WebElement startButton10;
+
+    @FindBy(id = "next")
+    private WebElement startButto11;
+
+    @FindBy(id = "next")
+    private WebElement startButton12;
+
+    @FindBy(id = "next")
+    private WebElement startButton13;
 
     @Override
     protected void initPageFactory() {
@@ -20,18 +79,28 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     }
 
     public void openLineAppOnPrimaryDevice() throws Exception {
-//        DriverCenter.startAppiumServer();
+        System.out.println("appiumDriver = " + appiumDriver);
+        System.out.println("actions = " + actions);
+        actions.verifyElementTextEqual(welcomeTitle, "Welcome to LINE", "Welcome Title");
     }
 
     public void clickOnStartButtonOnWelcomeLINEApp() {
-        waitors.waitSomeSeconds(5);
-//        actions.clickElement(startButton2, "Start Button");
-
-        MobileElement btn = (MobileElement) appiumDriver.findElement(By.id("jp.naver.line.android:id/next"));
-        btn.click();
-
-//        MobileElement head = (MobileElement) webDriver.findElement(By.id("jp.naver.line.android:id/header"));
-//        System.out.println("head.gett = " + head.getText());
-
+        actions.clickElement(nextButton, "Next Button");
+        actions.clickElement(dialogCancelButton, "Dialog Cancel Button");
     }
+
+    public void inputDefaultPhoneNumberAndPinCode() {
+        actions.clickElement(countrySelect, "Country Select");
+        actions.clickElement(japanCountryItem, "Japan Country Item");
+        actions.sendKeyElement(phoneNumerEditText, PropertiesFileReader.getProperty("phoneNumberGalaxyNote9"), "Phone Numer Edit Text");
+        actions.clickElement(nextButton, "Next Button");
+        actions.clickElement(dialogOKButton, "Dialog OK Button");
+        actions.sendKeyElement(codeVerification, PropertiesFileReader.getProperty("pinCodeGalaxyNote9"), "Code Verification");
+    }
+
+    /*
+    public void logInToLINEWithDefaultAccount() {
+        actions.clickElement(nextButton, "Start Button");
+    }
+     */
 }
