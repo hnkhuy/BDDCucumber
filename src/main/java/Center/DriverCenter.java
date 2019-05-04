@@ -112,11 +112,12 @@ public class DriverCenter {
         return capabilities;
     }
 
-    public static void setupPrimaryAppiumDriver() throws Exception {
+    public static AppiumDriver setupPrimaryAppiumDriver() throws Exception {
         //hardcode for single android - multi mobile driver later
         appiumDriver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), setupAppiumCapabilities());
         appiumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         isPrimaryAppiumDriverJustChanged = true;
+        return appiumDriver;
     }
 
     public static AppiumDriver getPrimaryAppiumDriver() throws Exception {

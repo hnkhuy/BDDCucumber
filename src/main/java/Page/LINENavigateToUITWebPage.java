@@ -1,6 +1,5 @@
 package Page;
 
-import Center.DriverCenter;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,11 +13,6 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
     @FindBy(linkText = "Start")
     private WebElement startButton2;
-
-    @Override
-    protected void setUpAppiumDriver() throws Exception {
-        DriverCenter.setupPrimaryAppiumDriver();
-    }
 
     @Override
     protected void initPageFactory() {
