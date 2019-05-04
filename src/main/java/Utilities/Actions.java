@@ -40,6 +40,7 @@ public class Actions {
     }
 
     public void verifyElementTextEqual(WebElement element, String expectedElementText, String elementName) {
+        waitors.waitForVisibilityOf(element, elementName);
         Assert.assertEquals(element.getText(), expectedElementText, elementName);
     }
 

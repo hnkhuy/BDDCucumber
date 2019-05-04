@@ -19,6 +19,12 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     @FindBy(id = "jp.naver.line.android:id/common_dialog_ok_btn")
     private WebElement dialogOKButton;
 
+    @FindBy(id = "jp.naver.line.android:id/country_code")
+    private WebElement countrySelect;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@text,'Japan')]")
+    private WebElement japanCountryItem;
+
     @FindBy(id = "jp.naver.line.android:id/edit_text")
     private WebElement phoneNumerEditText;
 
@@ -28,23 +34,8 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     @FindBy(id = "jp.naver.line.android:id/skip_button")
     private WebElement skipButton;
 
-    @FindBy(id = "jp.naver.line.android:id/skip")
-    private WebElement skipButton2;
-
-//    @FindBy(id = "jp.naver.line.android:id/common_dialog_title_message")
-//    private WebElement startButton4;
-//
-//    @FindBy(id = "jp.naver.line.android:id/common_dialog_background")
-//    private WebElement startButton3;
-
-    @FindBy(id = "jp.naver.line.android:id/country_code")
-    private WebElement countrySelect;
-
-    @FindBy(xpath = "//android.widget.TextView[contains(@text,'Japan')]")
-    private WebElement japanCountryItem;
-
-    @FindBy(id = "next")
-    private WebElement startButton4;
+    @FindBy(id = "jp.naver.line.android:id/header_title")
+    private WebElement headerTabNameTitle;
 
     @FindBy(id = "next")
     private WebElement startButton5;
@@ -79,8 +70,6 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     }
 
     public void openLineAppOnPrimaryDevice() throws Exception {
-        System.out.println("appiumDriver = " + appiumDriver);
-        System.out.println("actions = " + actions);
         actions.verifyElementTextEqual(welcomeTitle, "Welcome to LINE", "Welcome Title");
     }
 
@@ -98,9 +87,16 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
         actions.sendKeyElement(codeVerification, PropertiesFileReader.getProperty("pinCodeGalaxyNote9"), "Code Verification");
     }
 
+    public void passGuideSections() {
+        actions.clickElement(nextButton, "Next Button");
+        actions.clickElement(dialogCancelButton, "Dialog Cancel Button");
+        actions.clickElement(skipButton, "Skip Button");
+        actions.verifyElementTextEqual(headerTabNameTitle, "Friends", "Header Tab Name Title");
+    }
+
     /*
     public void logInToLINEWithDefaultAccount() {
-        actions.clickElement(nextButton, "Start Button");
+        actions.clickElement(nextButton, "Next Button");
     }
      */
 }
