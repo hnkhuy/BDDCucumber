@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
     @FindBy(id = "jp.naver.line.android:id/header")
@@ -37,17 +39,20 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     @FindBy(id = "jp.naver.line.android:id/header_title")
     private WebElement headerTabNameTitle;
 
-    @FindBy(id = "next")
-    private WebElement startButton5;
+    @FindBy(xpath = "//android.widget.TextView[@text='Official accounts']")
+    private WebElement officialAccountsOnFriends;
 
-    @FindBy(id = "next")
-    private WebElement startButton6;
+    @FindBy(id = "jp.naver.line.android:id/frienddetaildialog_name")
+    private WebElement friendDetailDialogName;
 
-    @FindBy(id = "next")
-    private WebElement startButton7;
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='jp.naver.line.android:id/frienddetaildialog_button_text'][@text='Home']")
+    private WebElement homeButtonIcon;
 
-    @FindBy(id = "next")
-    private WebElement startButton8;
+    @FindBy(id = "jp.naver.line.android:id/myhome_postlist_infoitem_profile_text")
+    private WebElement viewProfileItem;
+
+    @FindBy(id = "jp.naver.line.android:id/name")
+    private List<WebElement> listAccountName;
 
     @FindBy(id = "next")
     private WebElement startButto9;
@@ -91,7 +96,26 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
         actions.clickElement(nextButton, "Next Button");
         actions.clickElement(dialogCancelButton, "Dialog Cancel Button");
         actions.clickElement(skipButton, "Skip Button");
-        actions.verifyElementTextEqual(headerTabNameTitle, "Friends", "Header Tab Name Title");
+        actions.verifyElementTextEqual(headerTabNameTitle, "Friends 2", "Header Tab Name Title");
+    }
+
+    public void goToUITPageViaFriendList(String accountName) {
+        actions.clickElement(officialAccountsOnFriends, "Official Accounts On Friends");
+        //unknow issue here, click on not expected element when using getElementByXpath or lambda
+        clickOnAccountItemNamed(accountName);
+        actions.clickElement(homeButtonIcon, "Home Button Icon");
+        actions.clickElement(viewProfileItem, "View Profile Item");
+    }
+
+    public void clickOnAccountItemNamed(String accountName) {
+        for (int i = 0; i < listAccountName.size(); i++) {
+            if (listAccountName.get(i).getText().equals(accountName)) {
+                logger.debug("Account at position: " + i + " - " + listAccountName.get(i).getText());
+                actions.clickElement(listAccountName.get(i), accountName);
+                break;
+            }
+        }
+        actions.verifyElementTextEqual(friendDetailDialogName, accountName, "Friend Detail Dialog Name");
     }
 
     /*
