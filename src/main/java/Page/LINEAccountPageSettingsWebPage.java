@@ -53,6 +53,12 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
     @FindBy(xpath = "//button[contains(@class,'btn-publish')]")
     private WebElement publishButton;
 
+    @FindBy(xpath = "//span[contains(@class,'cursor-pointer')][text()='Collection']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]")
+    private List<WebElement> listCollectionDeleteIcon;
+
+    @FindBy(xpath = "//button[contains(@class,'ok default')]")
+    private WebElement confirmOKPluginButton;
+
     @Override
     protected void initPageFactory() {
         PageFactory.initElements(webDriver, this);
@@ -143,5 +149,12 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
 
     public void clickOnPublishButton() {
         actions.clickElement(publishButton, "Publish Button");
+    }
+
+    public void deleteAllExistedCollectionPlugin() {
+        for (int i = 0; i < listCollectionDeleteIcon.size(); i++) {
+            actions.clickElement(listCollectionDeleteIcon.get(i), "Collection Delete Icon Item");
+            actions.clickElement(confirmOKPluginButton, "Confirm OK Plugin Button");
+        }
     }
 }

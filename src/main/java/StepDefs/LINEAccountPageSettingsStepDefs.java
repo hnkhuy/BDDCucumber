@@ -23,6 +23,7 @@ public class LINEAccountPageSettingsStepDefs extends AbstractStepDefs {
     @Then("^I navigated to Account Page Settings of: (.*)$")
     public void navigatedToAccountPageSettingsOf(String accountName) {
         lineAccountPageSettingsPage.navigatedToAccountPageSettingsOf(accountName);
+        lineAccountPageSettingsPage.deleteAllExistedCollectionPlugin();
     }
 
     @Then("^I click on Add Plugin button$")
