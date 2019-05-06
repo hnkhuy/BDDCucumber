@@ -35,7 +35,7 @@ public class DriverCenter {
         options.addArguments("disable-infobars");
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             osDriverTail = "/chromedriver";
-//            options.addArguments("--start-fullscreen");
+            options.addArguments("--start-fullscreen");
         } else if (System.getProperty("os.name").toLowerCase().contains("win")) {
             osDriverTail = "\\chromedriver.exe";
             options.addArguments("--start-maximized");
@@ -109,6 +109,7 @@ public class DriverCenter {
         capabilities.setCapability("appPackage", "jp.naver.line.android");
         capabilities.setCapability("appActivity", ".activity.SplashActivity");
         capabilities.setCapability("app", newApp.getAbsolutePath());
+//        capabilities.setCapability("noReset", true);
 
         return capabilities;
     }

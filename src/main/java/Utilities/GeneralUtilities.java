@@ -27,4 +27,14 @@ public class GeneralUtilities {
         Date date = new Date();
         return sdf.format(date);
     }
+
+    public static String collectionPluginTitle = null;
+
+    public static void setCollectionPluginTitle(String title) {
+        collectionPluginTitle = title;
+    }
+
+    public static String getCollectionPluginTitle() {
+        return collectionPluginTitle;
+    }
 }

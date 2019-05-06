@@ -125,7 +125,9 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void fillCollectionPluginTitle() {
-        actions.sendKeyElement(pluginTitleTextbox, "Col_" + GeneralUtilities.getTimeStampForNameSuffix(), "Plugin Title Textbox");
+        String title = "Col_" + GeneralUtilities.getTimeStampForNameSuffix();
+        GeneralUtilities.setCollectionPluginTitle(title);
+        actions.sendKeyElement(pluginTitleTextbox, title, "Plugin Title Textbox");
     }
 
     public void fillCollectionItemsWithGivenTitleAndDescription(DataTable itemTable) {
