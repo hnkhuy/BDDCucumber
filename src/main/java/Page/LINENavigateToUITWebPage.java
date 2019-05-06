@@ -1,11 +1,14 @@
 package Page;
 
+import Utilities.Loggger;
 import Utilities.PropertiesFileReader;
+import cucumber.api.DataTable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Map;
 
 public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
@@ -54,20 +57,11 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
     @FindBy(id = "jp.naver.line.android:id/name")
     private List<WebElement> listAccountName;
 
-    @FindBy(id = "next")
-    private WebElement startButto9;
+    @FindBy(xpath = "//android.view.View[@resource-id='root']/android.view.View/android.view.View[5]/android.view.View[1]")
+    private WebElement collectionPluginTitle;
 
-    @FindBy(id = "next")
-    private WebElement startButton10;
-
-    @FindBy(id = "next")
-    private WebElement startButto11;
-
-    @FindBy(id = "next")
-    private WebElement startButton12;
-
-    @FindBy(id = "next")
-    private WebElement startButton13;
+    @FindBy(xpath = "//android.view.View[@resource-id='root']/android.view.View/android.view.View[5]/android.view.View[1]/following-sibling::android.view.View")
+    private List<WebElement> listCollectionItem;
 
     @Override
     protected void initPageFactory() {
@@ -118,9 +112,12 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
         actions.verifyElementTextEqual(friendDetailDialogName, accountName, "Friend Detail Dialog Name");
     }
 
-    /*
-    public void logInToLINEWithDefaultAccount() {
-        actions.clickElement(nextButton, "Next Button");
+    public void verifyCollectionPluginOnUIT(DataTable itemTable) {
+        actions.verifyElementTextStartWiths(collectionPluginTitle, "Col_", "Collection Plugin Title");
+        listCollectionItem.stream().map(webElement -> webElement.getText()).forEach(Loggger.getLogger(this.getClass())::debug);
+        List<Map<String, String>> itemsData = itemTable.asMaps(String.class, String.class);
+        for (int i = 0; i < itemsData.size(); i++) {
+            actions.verifyElementTextEqual(listCollectionItem.get(i), itemsData.get(i).get("ItemContent"), "Collection Item number " + (i + 1));
+        }
     }
-     */
 }

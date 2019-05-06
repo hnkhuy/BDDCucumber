@@ -1,6 +1,7 @@
 package StepDefs;
 
 import Page.LINENavigateToUITWebPage;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
@@ -27,6 +28,11 @@ public class LINENavigateToUITStepDefs extends AbstractStepDefs {
     @And("^I go to UIT page via Friend list: (.*)$")
     public void goToUITPageViaFriendList(String accountName) {
         lineNavigateToUITPage.passGuideSections();
-        lineNavigateToUITPage.goToUITPageViaFriendList( accountName);
+        lineNavigateToUITPage.goToUITPageViaFriendList(accountName);
+    }
+
+    @And("^I verify Collection plugin on UIT$")
+    public void verifyCollectionPluginOnUIT(DataTable itemTable) {
+        lineNavigateToUITPage.verifyCollectionPluginOnUIT(itemTable);
     }
 }

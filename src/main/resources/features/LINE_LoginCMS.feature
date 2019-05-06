@@ -8,21 +8,6 @@ Feature: LINE Demo Feature
     And I fill password with LINE default password
     Then I click on LINE Login button
 
-
-#  Background: Login success
-#    Given I navigated to LINE Business ID page
-#    Given I navigated to Login page
-#    When I fill email with default email
-#    And I fill password with default password
-#    And I click on Login button
-
-#  @Migration
-#  Scenario: AUV-657_Auditor- All Engagement List - Verify "Create Engagement" Button-huyhuynhz
-#    Given I can see Engagement List page
-#    Then I can see Create Engagement button
-#    And I can see text of Create Engagement button: "Create Engagement"
-#    And I can see text color of Create Engagement button is white
-
   @LINEDeveloping
   Scenario: First first - andrew.huynh
     Given I navigated to LINE Official Account Manager
@@ -32,14 +17,20 @@ Feature: LINE Demo Feature
     And I select to add Collection plugin
     Then I navigated to Collection plugin page
     And I fill Collection items with given title and description
-      | ItemAtosition | ItemTitle | ItemDescription |
-      | 1             | Item1     | Des1            |
-      | 2             | Item2     | Des2            |
-      | 3             | Item3     | Des3            |
+      | ItemAtPosition | ItemTitle | ItemDescription |
+      | 1              | Item1     | Des1            |
+      | 2              | Item2     | Des2            |
+      | 3              | Item3     | Des3            |
     And I fill Collection plugin title
     And I click on Save plugin button
     And I activate this plugin to Publish
     And I click on Publish button
     Then I open Line app on primary device
-    And I click on Start button on Welcome LINE app
+    And I log in to LINE with default account
+    And I go to UIT page via Friend list: nap_qa_test15
+    And I verify Collection plugin on UIT
+      | ItemAtPosition | ItemContent |
+      | 1              | Item1 Des1  |
+      | 2              | Item2 Des2  |
+      | 3              | Item3 Des3  |
 
