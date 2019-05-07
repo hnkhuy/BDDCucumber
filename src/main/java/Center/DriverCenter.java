@@ -58,8 +58,8 @@ public class DriverCenter {
         if (webDriver != null) {
             return webDriver;
         }
-        logger.error("Webdriver need to be setup first");
-        throw new Exception("Webdriver need to be setup first");
+        logger.error("Webdriver not setup yet, please check the ChromeDriver version");
+        throw new Exception("Webdriver not setup yet, please check the ChromeDriver version");
     }
 
     public static void quitPrimaryWebDriver() {
