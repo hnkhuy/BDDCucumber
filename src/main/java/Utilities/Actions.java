@@ -40,12 +40,6 @@ public class Actions {
         return element.isDisplayed();
     }
 
-    public boolean verifyElementNotExist(WebElement element, String elementName) {
-        waitors.waitForInvisibilityOf(element, elementName);
-        Assert.assertTrue(!element.isDisplayed(), "Expected " + elementName + " not displayed");
-        return !element.isDisplayed();
-    }
-
     public void verifyElementTextEqual(WebElement element, String expectedElementText, String elementName) {
         waitors.waitForVisibilityOf(element, elementName);
         Assert.assertEquals(element.getText(), expectedElementText, elementName);

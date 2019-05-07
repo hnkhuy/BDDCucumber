@@ -29,8 +29,8 @@ public class LINEAccountPageSettingsStepDefs extends AbstractStepDefs {
         lineAccountPageSettingsPage.navigatedToCollectionPluginPage();
     }
 
-    @And("^I fill Collection with given title and description$")
-    public void fillCollectionWithGivenTitleAndDescription(DataTable itemTable) {
+    @And("^I fill Collection plugin with given title and description$")
+    public void fillCollectionPluginWithGivenTitleAndDescription(DataTable itemTable) {
         //just for happy case, no validation for list item quantity-andrew.huynh
         lineAccountPageSettingsPage.fillCollectionItemsWithGivenTitleAndDescription(itemTable);
         lineAccountPageSettingsPage.fillCollectionPluginTitle();

@@ -29,11 +29,6 @@ public class LINELoginStepDefs extends AbstractStepDefs {
         loginPage.logInWithDefaultAccount();
     }
 
-    @Then("^I logged in successfully$")
-    public void loggedInSuccessfully() {
-        loginPage.verifyLoggedInSuccessfully();
-    }
-
     @Given("^I navigated to LINE Official Account Manager$")
     public void navigatedToLINEOfficialAccountManager() {
         loginPage.navigatedToLINEOfficialAccountManager();

@@ -43,10 +43,6 @@ public class LINELoginWebPage extends AbstractWebPage {
         actions.clickElement(logInButton, "Log In Button");
     }
 
-    public void verifyLoggedInSuccessfully() {
-        actions.verifyElementNotExist(logInButton,"Log In Button");
-    }
-
     public void navigatedToLINEOfficialAccountManager() {
         waitors.waitUntilPageTitleBeChanged("Manager");
         Assert.assertEquals(webDriver.getTitle(), "LINE Official Account Manager", "Expected navigated to LINE Official Account Manager page");
