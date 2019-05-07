@@ -31,6 +31,7 @@ public class Actions {
 
     public void sendKeyElement(WebElement element, String value, String elementName) {
         logger.info("Sendkey value: " + value + " to element: " + elementName);
+        waitors.waitForVisibilityOf(element, elementName);
         element.sendKeys(value);
     }
 

@@ -1,13 +1,11 @@
 package Page;
 
 import Utilities.GeneralUtilities;
-import cucumber.api.DataTable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.Map;
 
 public class AccountPageSettingsWebPage extends AbstractWebPage {
 
@@ -35,12 +33,6 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     @FindBy(xpath = "//div[@class='input-group']/input[@id]")
     private WebElement pluginTitleTextbox;
 
-    @FindBy(xpath = "//div[@class='input-group']/input[contains(@name,'item')]")
-    private List<WebElement> itemTitleTextbox;
-
-    @FindBy(xpath = "//div[@class='input-margin-top']/textarea")
-    private List<WebElement> itemDescriptionTextArea;
-
     @FindBy(xpath = "//button[contains(@class,'btn-save-pad')]")
     private WebElement savePluginButton;
 
@@ -59,7 +51,7 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     private String deleteIconByPluginNameXPath = "//span[contains(@class,'cursor-pointer')][text()='%s']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]";
 
     @Override
-    protected void initPageFactory() {
+    public void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 
@@ -127,14 +119,6 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
         String title = "Col_" + GeneralUtilities.getTimeStampForNameSuffix();
         GeneralUtilities.setCollectionPluginTitle(title);
         actions.sendKeyElement(pluginTitleTextbox, title, "Plugin Title Textbox");
-    }
-
-    public void fillCollectionItemsWithGivenTitleAndDescription(DataTable itemTable) {
-        List<Map<String, String>> itemsData = itemTable.asMaps(String.class, String.class);
-        for (int i = 0; i < itemsData.size(); i++) {
-            actions.sendKeyElement(itemTitleTextbox.get(i), itemsData.get(i).get("ItemTitle"), "Item Title" + (i + 1));
-            actions.sendKeyElement(itemDescriptionTextArea.get(i), itemsData.get(i).get("ItemDescription"), "Item Description" + (i + 1));
-        }
     }
 
     public void clickOnSavePluginButton() {

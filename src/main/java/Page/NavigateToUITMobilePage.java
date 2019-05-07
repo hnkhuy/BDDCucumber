@@ -60,10 +60,13 @@ public class NavigateToUITMobilePage extends AbstractMobilePage {
     private List<WebElement> listAccountName;
 
     @FindBy(xpath = "//android.view.View[@resource-id='root']/android.view.View/android.view.View[5]/android.view.View[1]")
-    private WebElement collectionPluginTitle;
+    private WebElement textnCollectionPluginTitle;
 
     @FindBy(xpath = "//android.view.View[@resource-id='root']/android.view.View/android.view.View[5]/android.view.View[1]/following-sibling::android.view.View")
     private List<WebElement> listCollectionItem;
+
+    @FindBy(xpath = "//android.view.View[@resource-id='root']/android.view.View/android.view.View[5]/android.view.View[2]")
+    private WebElement textPluginDescription;
 
     @Override
     protected void initPageFactory() {
@@ -117,10 +120,18 @@ public class NavigateToUITMobilePage extends AbstractMobilePage {
 
     public void verifyCollectionPluginOnUIT(DataTable itemTable) {
         // CMS bugging, change to verifyElementTextEqual later
-        actions.verifyElementTextStartWiths(collectionPluginTitle, "Col_", "Collection Plugin Title");
+        actions.verifyElementTextStartWiths(textnCollectionPluginTitle, "Col_", "Collection Plugin Title");
         List<Map<String, String>> itemsData = itemTable.asMaps(String.class, String.class);
         for (int i = 0; i < itemsData.size(); i++) {
             actions.verifyElementTextEqual(listCollectionItem.get(i), itemsData.get(i).get("ItemContent"), "Collection Item number " + (i + 1));
         }
+    }
+
+    public void verifyTextPluginTitle(String title) {
+        actions.verifyElementTextEqual(textnCollectionPluginTitle, title, "Text Plugin Title");
+    }
+
+    public void verifyTextPluginDescription(String description) {
+        actions.verifyElementTextEqual(textPluginDescription, description, "Text Plugin Description");
     }
 }

@@ -29,13 +29,6 @@ public class AccountPageSettingsStepDefs extends AbstractStepDefs {
         accountPageSettingsPage.navigatedToCollectionPluginPage();
     }
 
-    @And("^I fill Collection plugin with given title and description$")
-    public void fillCollectionPluginWithGivenTitleAndDescription(DataTable itemTable) {
-        //just for happy case, no validation for list item quantity-andrew.huynh
-        accountPageSettingsPage.fillCollectionItemsWithGivenTitleAndDescription(itemTable);
-        accountPageSettingsPage.fillCollectionPluginTitle();
-    }
-
     @And("^I Save plugin$")
     public void savePlugin() {
         accountPageSettingsPage.clickOnSavePluginButton();
@@ -45,10 +38,5 @@ public class AccountPageSettingsStepDefs extends AbstractStepDefs {
     public void publishPlugin() {
         accountPageSettingsPage.activateThisPluginToPublish();
         accountPageSettingsPage.clickOnPublishButton();
-    }
-
-    @When("^I fill Text plugin with given title and description$")
-    public void fillTextPluginWithGivenTitleAndDescription(DataTable data) {
-
     }
 }
