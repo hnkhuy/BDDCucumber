@@ -60,7 +60,7 @@ public class Actions {
      * @param xpath xpath to get element
      * @param arg   vararg for formating
      */
-    public WebElement getElementByXpath(String xpath, String... arg) {
+    public WebElement getElementByXPath(String xpath, String... arg) {
         logger.info("Get Element by Xpath.");
         WebElement webElement = null;
         xpath = String.format(xpath, arg);
@@ -79,7 +79,7 @@ public class Actions {
      * @param xpath xpath to get element
      * @param arg   vararg for formating
      */
-    public List<WebElement> getElementsByXpath(String xpath, String... arg) {
+    public List<WebElement> getElementsByXPath(String xpath, String... arg) {
         List<WebElement> webElements = null;
         xpath = String.format(xpath, arg);
         logger.info("xpaths = " + xpath);
@@ -91,7 +91,7 @@ public class Actions {
         return webElements;
     }
 
-    public WebElement getChildElementByXpath(WebElement ancestorElement, String xpath, String... arg) {
+    public WebElement getChildElementByXPath(WebElement ancestorElement, String xpath, String... arg) {
         logger.info("Get Child Element by Xpath.");
         WebElement webElement = null;
         xpath = String.format(xpath, arg);

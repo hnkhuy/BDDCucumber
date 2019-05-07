@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Map;
 
-public class LINENavigateToUITWebPage extends AbstractMobilePage {
+public class NavigateToUITMobilePage extends AbstractMobilePage {
 
     @FindBy(id = "jp.naver.line.android:id/header")
     private WebElement welcomeTitle;
@@ -98,7 +98,7 @@ public class LINENavigateToUITWebPage extends AbstractMobilePage {
 
     public void goToUITPageViaFriendList(String accountName) {
         actions.clickElement(officialAccountsOnFriends, "Official Accounts On Friends");
-        //unknow issue here, click on not expected element when using getElementByXpath or lambda
+        //unknow issue here, click on not expected element when using getElementByXPath or lambda
         clickOnAccountItemNamed(accountName);
         actions.clickElement(homeButtonIcon, "Home Button Icon");
         actions.clickElement(viewProfileItem, "View Profile Item");

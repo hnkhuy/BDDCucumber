@@ -1,38 +1,38 @@
 package StepDefs;
 
-import Page.LINENavigateToUITWebPage;
+import Page.NavigateToUITMobilePage;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
-public class LINENavigateToUITStepDefs extends AbstractStepDefs {
+public class NavigateToUITStepDefs extends AbstractStepDefs {
 
-    private LINENavigateToUITWebPage lineNavigateToUITPage;
+    private NavigateToUITMobilePage navigateToUITPage;
 
     @Override
     protected void initPages() {
-        lineNavigateToUITPage = new LINENavigateToUITWebPage();
+        navigateToUITPage = new NavigateToUITMobilePage();
     }
 
     @Then("^I open Line app on primary device$")
     public void openLineAppOnPrimaryDevice() throws Exception {
-        lineNavigateToUITPage.openLineAppOnPrimaryDevice();
+        navigateToUITPage.openLineAppOnPrimaryDevice();
     }
 
     @And("^I log in to LINE app with default account$")
     public void logInToLINEappAppWithDefaultAccount() {
-        lineNavigateToUITPage.clickOnStartButtonOnWelcomeLINEApp();
-        lineNavigateToUITPage.inputDefaultPhoneNumberAndPinCode();
+        navigateToUITPage.clickOnStartButtonOnWelcomeLINEApp();
+        navigateToUITPage.inputDefaultPhoneNumberAndPinCode();
     }
 
     @And("^I go to UIT page via Friend list: (.*)$")
     public void goToUITPageViaFriendList(String accountName) {
-        lineNavigateToUITPage.passGuideSections();
-        lineNavigateToUITPage.goToUITPageViaFriendList(accountName);
+        navigateToUITPage.passGuideSections();
+        navigateToUITPage.goToUITPageViaFriendList(accountName);
     }
 
     @And("^I verify Collection plugin on UIT$")
     public void verifyCollectionPluginOnUIT(DataTable itemTable) {
-        lineNavigateToUITPage.verifyCollectionPluginOnUIT(itemTable);
+        navigateToUITPage.verifyCollectionPluginOnUIT(itemTable);
     }
 }

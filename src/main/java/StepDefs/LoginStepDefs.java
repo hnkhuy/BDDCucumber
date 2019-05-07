@@ -1,20 +1,18 @@
 package StepDefs;
 
-import Page.LINELoginWebPage;
+import Page.LoginWebPage;
 import com.cucumber.listener.Reporter;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 
-public class LINELoginStepDefs extends AbstractStepDefs {
+public class LoginStepDefs extends AbstractStepDefs {
 
-    private LINELoginWebPage loginPage;
+    private LoginWebPage loginPage;
 
     @Override
     protected void initPages() {
-        loginPage = new LINELoginWebPage();
+        loginPage = new LoginWebPage();
     }
 
     @Given("^I navigated to LINE Business ID page$")

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Map;
 
-public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
+public class AccountPageSettingsWebPage extends AbstractWebPage {
 
     @FindBy(id = "topAccountName")
     private WebElement previewAccountName;
@@ -53,11 +53,10 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
     @FindBy(xpath = "//button[contains(@class,'btn-publish')]")
     private WebElement publishButton;
 
-    @FindBy(xpath = "//span[contains(@class,'cursor-pointer')][text()='Collection']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]")
-    private List<WebElement> listCollectionDeleteIcon;
-
     @FindBy(xpath = "//button[contains(@class,'ok default')]")
     private WebElement confirmOKPluginButton;
+
+    private String deleteIconByPluginNameXPath = "//span[contains(@class,'cursor-pointer')][text()='%s']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]";
 
     @Override
     protected void initPageFactory() {
@@ -65,7 +64,7 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void clickAccountNameOnListAccount(String accountName) {
-        WebElement accountNameLink = actions.getElementByXpath("//span[text()='%s']/..", accountName);
+        WebElement accountNameLink = actions.getElementByXPath("//span[text()='%s']/..", accountName);
 
         waitors.waitForElementToBeClickable(accountNameLink, "Account Name Link");
         actions.clickElement(accountNameLink, "Account Name Link");
@@ -112,7 +111,7 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void selectToAddPlugin(String pluginName) {
-        WebElement pluginRadioButton = actions.getElementByXpath("//input[@id='add%sRadio']", pluginName);
+        WebElement pluginRadioButton = actions.getElementByXPath("//input[@id='add%sRadio']", pluginName);
 
         waitors.waitForElementToBeClickable(pluginRadioButton, "Plugin Radio Button");
         actions.clickElement(pluginRadioButton, "Plugin Radio Button");
@@ -153,9 +152,11 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
         actions.clickElement(publishButton, "Publish Button");
     }
 
-    public void deleteAllExistedCollectionPlugin() {
-        for (int i = 0; i < listCollectionDeleteIcon.size(); i++) {
-            actions.clickElement(listCollectionDeleteIcon.get(i), "Collection Delete Icon Item");
+    public void deleteAllExistedCollectionPlugin(String pluginName) {
+        List<WebElement> listDeleteIcon = actions.getElementsByXPath(deleteIconByPluginNameXPath, pluginName);
+
+        for (int i = 0; i < listDeleteIcon.size(); i++) {
+            actions.clickElement(listDeleteIcon.get(i), "Delete Icon Item");
             actions.clickElement(confirmOKPluginButton, "Confirm OK Plugin Button");
         }
     }

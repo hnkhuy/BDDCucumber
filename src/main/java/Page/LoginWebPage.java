@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class LINELoginWebPage extends AbstractWebPage {
+public class LoginWebPage extends AbstractWebPage {
 
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement logInWithLINEButton;
