@@ -30,26 +30,21 @@ public class LINELoginWebPage extends AbstractWebPage {
         logger.info("Navigated to LINE Business ID page");
     }
 
-    public void clickOnLogInWithLINEAccountButton() {
+    public void navigatedToLINELoginPage() {
         waitors.waitForElementToBeClickable(logInWithLINEButton, "Log In With LINE Button");
         actions.clickElement(logInWithLINEButton, "Log In With LINE Button");
-    }
-
-    public void navigatedToLINELoginPage() {
         Assert.assertEquals(webDriver.getTitle(), "LINE Login", "Expected navigated to LINE Login page");
     }
 
-    public void fillEmailWithLINEDefaultEmail() {
+    public void logInWithDefaultAccount() {
         actions.sendKeyElement(emailTextbox, PropertiesFileReader.getProperty("email"), "Email Textbox");
-    }
-
-    public void fillPasswordWithLINEDefaultPassword() {
         actions.sendKeyElement(passwordTextbox, PropertiesFileReader.getProperty("password"), "Password Textbox");
-    }
-
-    public void clickOnLINELoginButton() {
         waitors.waitForElementToBeClickable(logInButton, "Log In Button");
         actions.clickElement(logInButton, "Log In Button");
+    }
+
+    public void verifyLoggedInSuccessfully() {
+        actions.verifyElementNotExist(logInButton,"Log In Button");
     }
 
     public void navigatedToLINEOfficialAccountManager() {

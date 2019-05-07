@@ -19,8 +19,8 @@ public class LINENavigateToUITStepDefs extends AbstractStepDefs {
         lineNavigateToUITPage.openLineAppOnPrimaryDevice();
     }
 
-    @And("^I log in to LINE with default account$")
-    public void logInToLINEWithDefaultAccount() {
+    @And("^I log in to LINE app with default account$")
+    public void logInToLINEappAppWithDefaultAccount() {
         lineNavigateToUITPage.clickOnStartButtonOnWelcomeLINEApp();
         lineNavigateToUITPage.inputDefaultPhoneNumberAndPinCode();
     }

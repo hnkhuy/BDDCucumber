@@ -22,30 +22,16 @@ public class LINELoginStepDefs extends AbstractStepDefs {
         loginPage.navigatedToLINEBusinessIDPage();
     }
 
-    @When("^I click on Log in with LINE account button$")
-    public void clickOnLogInWithLINEAccountButton() {
-        loginPage.clickOnLogInWithLINEAccountButton();
-    }
-
-    @Then("^I navigated to LINE Login page$")
-    public void navigatedToLINELoginPage() {
+    @When("^I log in to LINE CMS with default account$")
+    public void logInToLINECMSWithDefaultAccount() {
         loginPage.navigatedToLINELoginPage();
-        Reporter.addStepLog("++++++++++++++I navigated to LINE Login page");
+        Reporter.addStepLog("+++++I navigated to LINE Login page");
+        loginPage.logInWithDefaultAccount();
     }
 
-    @And("^I fill email with LINE default email$")
-    public void fillEmailWithLINEDefaultEmail() {
-        loginPage.fillEmailWithLINEDefaultEmail();
-    }
-
-    @And("^I fill password with LINE default password$")
-    public void fillPasswordWithLINEDefaultPassword() {
-        loginPage.fillPasswordWithLINEDefaultPassword();
-    }
-
-    @Then("^I click on LINE Login button$")
-    public void clickOnLINELoginButton() {
-        loginPage.clickOnLINELoginButton();
+    @Then("^I logged in successfully$")
+    public void loggedInSuccessfully() {
+        loginPage.verifyLoggedInSuccessfully();
     }
 
     @Given("^I navigated to LINE Official Account Manager$")

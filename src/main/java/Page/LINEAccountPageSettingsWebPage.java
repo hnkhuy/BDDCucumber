@@ -71,7 +71,7 @@ public class LINEAccountPageSettingsWebPage extends AbstractWebPage {
         actions.clickElement(accountNameLink, "Account Name Link");
     }
 
-    public void navigatedToAccountPageSettingsOf(String accountName) {
+    public void navigateToAccountPageSettingsOf(String accountName) {
         //Debuging for cannot-gettext-element
 //        System.out.println("previewAccountName = " + previewAccountName);
 //        System.out.println("previewAccountName2 = " + previewAccountName);

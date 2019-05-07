@@ -15,55 +15,35 @@ public class LINEAccountPageSettingsStepDefs extends AbstractStepDefs {
         lineAccountPageSettingsPage = new LINEAccountPageSettingsWebPage();
     }
 
-    @When("^I click account name: (.*) on list account$")
-    public void clickAccountNameOnListAccount(String accountName) {
+    @When("^I navigate to Account Page Settings of: (.*)$")
+    public void navigateToAccountPageSettingsOf(String accountName) {
         lineAccountPageSettingsPage.clickAccountNameOnListAccount(accountName);
-    }
-
-    @Then("^I navigated to Account Page Settings of: (.*)$")
-    public void navigatedToAccountPageSettingsOf(String accountName) {
-        lineAccountPageSettingsPage.navigatedToAccountPageSettingsOf(accountName);
+        lineAccountPageSettingsPage.navigateToAccountPageSettingsOf(accountName);
         lineAccountPageSettingsPage.deleteAllExistedCollectionPlugin();
     }
 
-    @Then("^I click on Add Plugin button$")
-    public void clickOnAddPluginButton() {
-        lineAccountPageSettingsPage.clickOnAddPluginButton();
-    }
-
-    @And("^I select to add (.*) plugin$")
+    @Then("^I add new (.*) plugin$")
     public void selectToAddPlugin(String pluginName) {
+        lineAccountPageSettingsPage.clickOnAddPluginButton();
         lineAccountPageSettingsPage.selectToAddPlugin(pluginName);
-    }
-
-    @Then("^I navigated to Collection plugin page$")
-    public void navigatedToCollectionPluginPage() {
         lineAccountPageSettingsPage.navigatedToCollectionPluginPage();
     }
 
-    @And("^I fill Collection plugin title$")
-    public void fillCollectionPluginTitle() {
+    @And("^I fill Collection with given title and description$")
+    public void fillCollectionWithGivenTitleAndDescription(DataTable itemTable) {
+        //just for happy case, no validation for list item quantity-andrew.huynh
+        lineAccountPageSettingsPage.fillCollectionItemsWithGivenTitleAndDescription(itemTable);
         lineAccountPageSettingsPage.fillCollectionPluginTitle();
     }
 
-    @And("^I fill Collection items with given title and description$")
-    public void fillCollectionItemsWithGivenTitleAndDescription(DataTable itemTable) {
-        //just for happy case, no validation for list item quantity-andrew.huynh
-        lineAccountPageSettingsPage.fillCollectionItemsWithGivenTitleAndDescription(itemTable);
-    }
-
-    @And("^I click on Save plugin button$")
-    public void clickOnSavePluginButton() {
+    @And("^I Save plugin$")
+    public void savePlugin() {
         lineAccountPageSettingsPage.clickOnSavePluginButton();
     }
 
-    @And("^I activate this plugin to Publish$")
-    public void activateThisPluginToPublish() {
+    @And("^I Publish plugin$")
+    public void publishPlugin() {
         lineAccountPageSettingsPage.activateThisPluginToPublish();
-    }
-
-    @And("^I click on Publish button$")
-    public void clickOnPublishButton() {
         lineAccountPageSettingsPage.clickOnPublishButton();
     }
 }
