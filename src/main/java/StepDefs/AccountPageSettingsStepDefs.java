@@ -23,6 +23,7 @@ public class AccountPageSettingsStepDefs extends AbstractStepDefs {
 
     @Then("^I add new (.*) plugin$")
     public void selectToAddPlugin(String pluginName) {
+        accountPageSettingsPage.deactivateOthersPlugin();
         accountPageSettingsPage.deleteAllExistedCollectionPlugin(pluginName);
         accountPageSettingsPage.clickOnAddPluginButton();
         accountPageSettingsPage.selectToAddPlugin(pluginName);
@@ -32,11 +33,13 @@ public class AccountPageSettingsStepDefs extends AbstractStepDefs {
     @And("^I Save plugin$")
     public void savePlugin() {
         accountPageSettingsPage.clickOnSavePluginButton();
+        accountPageSettingsPage.verifySavedToastMessage();
     }
 
     @And("^I Publish plugin$")
     public void publishPlugin() {
         accountPageSettingsPage.activateThisPluginToPublish();
         accountPageSettingsPage.clickOnPublishButton();
+        accountPageSettingsPage.verifyPublishedToastMessage();
     }
 }

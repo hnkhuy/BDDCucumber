@@ -26,11 +26,11 @@ public class NavigateToUITStepDefs extends AbstractStepDefs {
     public void logInToLINEappAppWithDefaultAccount() {
         navigateToUITPage.clickOnStartButtonOnWelcomeLINEApp();
         navigateToUITPage.inputDefaultPhoneNumberAndPinCode();
+        navigateToUITPage.passGuideSections();
     }
 
     @And("^I go to UIT page via Friend list: (.*)$")
     public void goToUITPageViaFriendList(String accountName) {
-        navigateToUITPage.passGuideSections();
         navigateToUITPage.goToUITPageViaFriendList(accountName);
     }
 

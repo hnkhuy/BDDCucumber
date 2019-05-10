@@ -1,6 +1,7 @@
 package Utilities;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -50,5 +51,11 @@ public class Waitors {
         logger.info("Waiting for Invisibility of element: " + elementName);
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, Static.EXPLITCIT_TIMEOUT_IN_SECONDS);
         webDriverWait.until(ExpectedConditions.invisibilityOf(webElement));
+    }
+
+    public void waitForConfirmDialogClosed() {
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, Static.EXPLITCIT_TIMEOUT_IN_SECONDS);
+        webDriverWait.until(ExpectedConditions.attributeToBe(webDriver.findElement(By.id("popModalConfirm")), "style", "display: none;"));
+
     }
 }

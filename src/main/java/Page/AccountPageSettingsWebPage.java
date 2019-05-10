@@ -48,10 +48,25 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     @FindBy(xpath = "//button[contains(@class,'ok default')]")
     private WebElement confirmOKPluginButton;
 
+    @FindBy(xpath = "//input[@class='cb1'][@checked]/../label")
+    private List<WebElement> listActivatedPlugins;
+
+    @FindBy(xpath = "//div[@class='toastr-message'][text()='Saved.']")
+    private WebElement savedToastMessage;
+
+    @FindBy(xpath = "//div[@class='toastr-message'][text()='Published.']")
+    private WebElement publishedToastMessage;
+
+    @FindBy(xpath = "//span[contains(@class,'cursor-pointer')][text()='Collection']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]")
+    private WebElement collectionDeleteIcon;
+
+    @FindBy(xpath = "//span[contains(@class,'cursor-pointer')][text()='Text']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]")
+    private WebElement textDeleteIcon;
+
     private String deleteIconByPluginNameXPath = "//span[contains(@class,'cursor-pointer')][text()='%s']/ancestor::div[contains(@id,'plugin')]//div[contains(@class,'deleteArea')]";
 
     @Override
-    public void initPageFactory() {
+    public final void initPageFactory() {
         PageFactory.initElements(webDriver, this);
     }
 
@@ -138,10 +153,33 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
 
     public void deleteAllExistedCollectionPlugin(String pluginName) {
         List<WebElement> listDeleteIcon = actions.getElementsByXPath(deleteIconByPluginNameXPath, pluginName);
-
+        WebElement deleteIcon = null;
+        switch (pluginName) {
+            case "Collection":
+                deleteIcon = collectionDeleteIcon;
+                break;
+            case "Text":
+                deleteIcon = textDeleteIcon;
+                break;
+        }
         for (int i = 0; i < listDeleteIcon.size(); i++) {
-            actions.clickElement(listDeleteIcon.get(i), "Delete Icon Item");
+            // need a closed dialog wait here, tempararily add 1 sec wait-andrew.huynh
+            waitors.waitSomeSeconds(1);
+            actions.clickElement(deleteIcon, "Delete Icon Item");
             actions.clickElement(confirmOKPluginButton, "Confirm OK Plugin Button");
         }
+    }
+
+    public void deactivateOthersPlugin() {
+        logger.info("Deactivate All Plugins");
+        listActivatedPlugins.forEach(WebElement::click);
+    }
+
+    public void verifySavedToastMessage() {
+        actions.verifyElementExist(savedToastMessage, "Saved Toast Message");
+    }
+
+    public void verifyPublishedToastMessage() {
+        actions.verifyElementExist(publishedToastMessage, "Published Toast Message");
     }
 }

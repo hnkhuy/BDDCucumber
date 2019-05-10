@@ -4,10 +4,10 @@ Feature: LINE Demo Feature
     Given I navigated to LINE Business ID page
     When I log in to LINE CMS with default account
     Then I navigated to LINE Official Account Manager
-    And I navigate to Account Page Settings of: TEST_bp2_tw_prem
+    And I navigate to Account Page Settings of: nap_qa_test15
 
   @LINEDeveloping @CollectionPlugin @P1
-  Scenario: NAP-398 Add collection plugin without uploaded photos - andrew.huynh
+  Scenario: NAP-398 Add collection plugin without uploaded photos - andrew
     Given I add new Collection plugin
     When I fill Collection plugin with given title and description
       | ItemAtPosition | ItemTitle | ItemDescription |
@@ -26,7 +26,7 @@ Feature: LINE Demo Feature
       | 3              | Item3 Des3  |
 
   @LINEDeveloping @TextPlugin @P1
-  Scenario: NAP-195 Add basic text plugin without uploaded photo - andrew.huynh
+  Scenario: NAP-195 Add basic text plugin without uploaded photo - andrew
     Given I add new Text plugin
     When I fill Text plugin with given title and description
       | Title             | Description                        |
@@ -39,3 +39,10 @@ Feature: LINE Demo Feature
     And I verify Text plugin on UIT
       | Title             | Description                        |
       | Text plugin title | Automation Text plugin description |
+
+#  @LINEDeveloping @TextPlugin @P1
+#  Scenario: NAP-195 Add basic text plugin without uploaded photo - andrew.huynh
+#    Given I add new Text plugin
+#    When I fill Text plugin with given title and description
+#      | Title             | Description                        | PhotoName|
+#      | Text plugin title | Automation Text plugin description |

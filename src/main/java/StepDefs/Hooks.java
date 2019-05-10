@@ -25,8 +25,8 @@ public class Hooks {
             Reporter.assignAuthor("hnkhuy");
         } else if (scenario.getName().contains("huyhuynhz")) {
             Reporter.assignAuthor("huyhuynhz");
-        } else if (scenario.getName().contains("andrew.huynh")) {
-            Reporter.assignAuthor("AndrewHuynh");
+        } else if (scenario.getName().contains("andrew")) {
+            Reporter.assignAuthor("Andrew");
         } else {
             Reporter.assignAuthor("Other");
         }
