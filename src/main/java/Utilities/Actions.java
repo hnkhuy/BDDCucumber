@@ -46,6 +46,11 @@ public class Actions {
         Assert.assertEquals(element.getText(), expectedElementText, elementName);
     }
 
+    public void verifyElementTextEqual(WebElement element, String expectedElementText, String elementName, int waitTime) {
+        waitors.waitForVisibilityOf(element, elementName, waitTime);
+        Assert.assertEquals(element.getText(), expectedElementText, elementName);
+    }
+
     public void verifyElementTextStartWiths(WebElement element, String expectedElementTextPrefix, String elementName) {
         waitors.waitForVisibilityOf(element, elementName);
         Assert.assertTrue(element.getText().startsWith(expectedElementTextPrefix), "Expected " + elementName + " text start with: " + expectedElementTextPrefix);

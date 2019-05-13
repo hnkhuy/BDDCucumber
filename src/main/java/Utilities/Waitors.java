@@ -48,6 +48,12 @@ public class Waitors {
         webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
+    public void waitForVisibilityOf(WebElement webElement, String elementName, int specificWaitTime) {
+        logger.info("Waiting for Visibility of element: " + elementName);
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, specificWaitTime);
+        webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     public void waitForInvisibilityOf(WebElement webElement, String elementName) {
         logger.info("Waiting for Invisibility of element: " + elementName);
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, Static.EXPLITCIT_TIMEOUT_IN_SECONDS);

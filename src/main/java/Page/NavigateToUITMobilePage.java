@@ -96,12 +96,12 @@ public class NavigateToUITMobilePage extends AbstractMobilePage {
         actions.clickElement(dialogCancelButton, "Dialog Cancel Button");
         actions.clickElement(skipButton, "Skip Button");
         actions.clickElement(ageSkipButton, "Age Skip Button");
-        actions.verifyElementTextEqual(headerTabNameTitle, "Friends 3", "Header Tab Name Title");
+        actions.verifyElementTextEqual(headerTabNameTitle, "Friends 3", "Header Tab Name Title", 30);
     }
 
     public void goToUITPageViaFriendList(String accountName) {
         actions.clickElement(officialAccountsOnFriends, "Official Accounts On Friends");
-        //unknow issue here, click on not expected element when using getElementByXPath or lambda
+        //TODO unknow issue here, click on not expected element when using getElementByXPath or lambda
         clickOnAccountItemNamed(accountName);
         actions.clickElement(homeButtonIcon, "Home Button Icon");
         actions.clickElement(viewProfileItem, "View Profile Item");
@@ -119,7 +119,7 @@ public class NavigateToUITMobilePage extends AbstractMobilePage {
     }
 
     public void verifyCollectionPluginOnUIT(DataTable itemTable) {
-        // CMS bugging, change to verifyElementTextEqual later
+        //TODO CMS bugging, change to verifyElementTextEqual later
         actions.verifyElementTextStartWiths(textnCollectionPluginTitle, "Col_", "Collection Plugin Title");
         List<Map<String, String>> itemsData = itemTable.asMaps(String.class, String.class);
         for (int i = 0; i < itemsData.size(); i++) {
