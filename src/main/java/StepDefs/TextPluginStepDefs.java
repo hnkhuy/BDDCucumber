@@ -21,5 +21,8 @@ public class TextPluginStepDefs extends AbstractStepDefs {
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
         textPluginPage.fillTitle(data.get(0).get("Title"));
         textPluginPage.fillDescription(data.get(0).get("Description"));
+        if (data.get(0).get("PhotoName") != null) {
+            textPluginPage.uploadPhoto(data.get(0).get("PhotoName"));
+        }
     }
 }

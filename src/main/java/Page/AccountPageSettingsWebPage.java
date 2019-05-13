@@ -78,7 +78,7 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void navigateToAccountPageSettingsOf(String accountName) {
-        //Debuging for cannot-gettext-element
+        //TODO Debuging for cannot-gettext-element
 //        System.out.println("previewAccountName = " + previewAccountName);
 //        System.out.println("previewAccountName2 = " + previewAccountName);
 //        System.out.println("previewAccountName = " + previewAccountName.getTagName());
@@ -111,7 +111,7 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void clickOnAddPluginButton() {
-        // issue here, come back later, tempararily add 1 sec wait-andrew.huynh
+        //TODO issue here, come back later, tempararily add 1 sec wait-andrew.huynh
         waitors.waitSomeSeconds(1);
         waitors.waitForElementToBeClickable(addPluginButton, "Add Plugin Button");
         actions.clickElement(addPluginButton, "Add Plugin Button");
@@ -142,7 +142,7 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
     }
 
     public void activateThisPluginToPublish() {
-        // need a better wait here, tempararily add 1 sec wait-andrew.huynh
+        //TODO need a better wait here, tempararily add 1 sec wait-andrew.huynh
         waitors.waitSomeSeconds(2);
         actions.clickElement(selectedPluginActivationCheckbox, "Selected Plugin Activation Checkbox");
     }
@@ -163,7 +163,7 @@ public class AccountPageSettingsWebPage extends AbstractWebPage {
                 break;
         }
         for (int i = 0; i < listDeleteIcon.size(); i++) {
-            // need a closed dialog wait here, tempararily add 1 sec wait-andrew.huynh
+            //TODO need a closed dialog wait here, tempararily add 1 sec wait-andrew.huynh
             waitors.waitSomeSeconds(1);
             actions.clickElement(deleteIcon, "Delete Icon Item");
             actions.clickElement(confirmOKPluginButton, "Confirm OK Plugin Button");
