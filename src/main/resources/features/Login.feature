@@ -1,9 +1,7 @@
 Feature: Developing Project
 
-  Scenario: Search around
-    Given I navigated to Login page
-    When I fill email with default email
-    And I fill password with default password
-    And I click on Login button
-    Then I can see Engagement List page
-
+  Scenario: Login Execute Automation
+    Given I navigated to EA Login page
+    When I fill email and password
+    And I click on EA Login button
+    Then I can see User Form page
