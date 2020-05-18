@@ -11,7 +11,10 @@ import org.testng.annotations.BeforeTest;
  * Created by huy.huynh on 13/09/2018.
  */
 
-@CucumberOptions(features = "src/main/resources/features/", glue = {"StepDefs"})
+@CucumberOptions(features = "src/main/resources/features/", glue = {"StepDefs"},
+        plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json",
+                "junit:target/cucumber-reports/Cucumber.xml",
+                "html:target/cucumber-reports" }, monochrome = true )
 public class DevelopingTestRunner extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void setupSomething() throws Exception {
