@@ -15,4 +15,9 @@ public class UserFormStepDefs extends AbstractStepDefs {
     public void iCanSeeUserFormPage() {
         userFormPage.seeUserFormPage();
     }
+
+    @Then("^I can see Done button$")
+    public void iCanSeeDoneButton() {
+        userFormPage.seeDoneButton();
+    }
 }
