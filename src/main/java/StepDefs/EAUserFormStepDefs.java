@@ -3,7 +3,7 @@ package StepDefs;
 import Page.EAUserFormPage;
 import cucumber.api.java.en.Then;
 
-public class UserFormStepDefs extends AbstractStepDefs {
+public class EAUserFormStepDefs extends AbstractStepDefs {
     EAUserFormPage userFormPage;
 
     @Override
