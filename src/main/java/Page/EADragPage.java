@@ -11,9 +11,6 @@ import org.testng.Assert;
  */
 public class EADragPage extends AbstractPage {
 
-    @FindBy(id = "draggable")
-    private WebElement pageTitle;
-
     @FindBy(xpath = "//span[text()='Drag and Drop']")
     private WebElement dragTab;
 
@@ -23,13 +20,9 @@ public class EADragPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickOnDragTab() {
-        actions.clickElement(dragTab,"Drag tab");
-    }
-
-    public void seeDragPage() {
-        logger.debug("Debugging Drag Page loadding");
-        waitors.waitForVisibilityOf(pageTitle,"Page Title");
-        Assert.assertTrue(pageTitle.isDisplayed(), "Expected Page Header Title is displayed");
+    public void seeDragTab() {
+        logger.debug("Debugging Drag tab");
+        waitors.waitForVisibilityOf(dragTab,"Drag tab");
+        Assert.assertTrue(dragTab.isDisplayed(), "Expected Drag tab is displayed");
     }
 }

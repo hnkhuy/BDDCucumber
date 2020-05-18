@@ -11,13 +11,8 @@ public class EADragnDropStepDefs extends AbstractStepDefs {
         eaDragPage= new EADragPage(webDriver);
     }
 
-    @Then("^I click on Dragging and Sorting tab$")
-    public void iCanSeeUserFormPage() {
-        eaDragPage.clickOnDragTab();
-    }
-
-    @Then("^I can see Dragging and Sorting page$")
+    @Then("^I can see Dragging and Sorting tab$")
     public void iCanSeeDoneButton() {
-        eaDragPage.seeDragPage();
+        eaDragPage.seeDragTab();
     }
 }
